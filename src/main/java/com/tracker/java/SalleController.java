@@ -78,10 +78,12 @@ public class SalleController extends HttpServlet {
 //            }
             String code = request.getParameter("code");
             String type = request.getParameter("type");
-            List<Salle> salles = sv.findFilitred(new Salle(id, code, type));
+            Date date=new Date(request.getParameter("created_at").replace("-", "/"));
+           List<Salle> salles = sv.findFilitred(new Salle(id, code, type,date));
 //            List<Salle> salles = sv.findFilitred(new Salle(id, code, type,created_at));
             Gson json = new Gson();
             response.getWriter().write(json.toJson(salles));
+            //out.println(request.getParameter("created_at").replace("-", "/"));
 //            }
         }
     }

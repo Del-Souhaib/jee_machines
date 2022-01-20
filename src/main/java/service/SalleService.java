@@ -6,13 +6,13 @@ import beans.Salle;
 import connexion.Connexion;
 import dao.IDao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SalleService implements IDao<Salle> {
@@ -108,7 +108,7 @@ public class SalleService implements IDao<Salle> {
 
     public List<Salle> findFilitred(Salle salle) {
         List<Salle> salles = new ArrayList<Salle>();
-        String sql= "select * from salles where code like ? and type like ?  ";
+        String sql= "select * from salles where code like ? and type like ? and created_at like ? ";
         if(salle.getId()!=0){
              sql += " and id = ? ";
         }
@@ -118,7 +118,7 @@ public class SalleService implements IDao<Salle> {
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
             if(salle.getId()!=0){
-                ps.setInt(3,salle.getId());
+                ps.setInt(4,salle.getId());
             }
 //            if(salle.getCreated_at().toString().equals("0000-00-00")){
 //                ps.setDate(4,new java.sql.Date(salle.getCreated_at().getTime()));
@@ -126,6 +126,7 @@ public class SalleService implements IDao<Salle> {
 
             ps.setString(1, ("%"+salle.getCode()+"%"));
             ps.setString(2, ("%"+ salle.getType()+"%"));
+            ps.setDate(3, (new Date(salle.getCreated_at().getTime())));
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

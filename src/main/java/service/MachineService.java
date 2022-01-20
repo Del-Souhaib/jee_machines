@@ -52,15 +52,15 @@ public class MachineService implements IDao<Machine> {
     @Override
     public boolean update(Machine o) {
 
-        String sql = "update machines set reference  = ? ,dateAchat = ? , prix = ? ,marque=?,salle_id=? where id  = ?";
+        String sql = "update machines set reference  = ? ,date_achat = ? , prix = ? ,marque=?,salle_id=? where id  = ?";
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
             ps.setString(1, o.getReference());
             ps.setDate(2, new Date(o.getDateAchat().getTime()));
             ps.setDouble(3, o.getPrix());
             ps.setString(4, o.getMarque());
-            ps.setInt(4, o.getSalle().getId());
-            ps.setInt(4, o.getId());
+            ps.setInt(5, o.getSalle().getId());
+            ps.setInt(6, o.getId());
             if (ps.executeUpdate() == 1) {
                 return true;
             }
@@ -74,7 +74,7 @@ public class MachineService implements IDao<Machine> {
     @Override
     public Machine findById(int id) {
         Machine m = null;
-        String sql = "select * from machines where id  = ?";
+        String sql = "select * from machines where id  = ? limit 1";
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
             ps.setInt(1, id);
@@ -144,6 +144,43 @@ public class MachineService implements IDao<Machine> {
             System.out.println("findReference " + e.getMessage());
         }
         return references;
+    }
+
+    public List<Machine> findFilitred(Machine machine) {
+        List<Machine> machines = new ArrayList<Machine>();
+
+        String sql= "select * from machines where salle_id like ? and reference like ? and marque like ? " +
+                " and date_achat like ? and prix like ? and created_at like ? ";
+        if(machine.getId()!=0){
+            sql += " and id = ? ";
+        }
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            if(machine.getId()!=0){
+                ps.setInt(4,machine.getId());
+            }
+
+            ps.setInt(1, (machine.getSalle().getId()));
+            ps.setString(2, ("%"+ machine.getReference()+"%"));
+            ps.setString(3, ("%"+ machine.getMarque()+"%"));
+            ps.setDate(4, (new Date(machine.getDateAchat().getTime())));
+            ps.setDouble(5, (machine.getPrix()));
+            ps.setDate(6, (new Date(machine.getCreated_at().getTime())));
+
+            ResultSet rs = ps.executeQuery();
+
+            SalleService ss=new SalleService();
+            while (rs.next()) {
+                machines.add(new Machine(rs.getInt("id"), rs.getString("reference"),
+                        rs.getDate("date_achat"),rs.getDouble("prix"),
+                        ss.findById(rs.getInt("salle_id")),rs.getString("marque"),
+                        rs.getDate("created_at")));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("findAll " + e.getMessage());
+        }
+        return machines;
     }
 
 }

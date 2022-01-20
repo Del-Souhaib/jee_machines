@@ -12,19 +12,27 @@
     <!-- site icon -->
     <%--      <link rel="icon" href="<%=request.getContextPath()%>/images/fevicon.png" type="image/png" />--%>
     <!-- bootstrap css -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"
+            integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<%--    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"/>--%>
-<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
-<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">--%>
+    <%--    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"/>--%>
+    <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
+    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">--%>
     <!-- site css -->
     <style>
         /*------------------------------------------------------------------
@@ -3454,20 +3462,20 @@
             cursor: pointer !important;
         }
     </style>
-<%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style01.css"/>--%>
-<%--    &lt;%&ndash;      <!-- responsive css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css"/>--%>
-<%--    &lt;%&ndash;      <!-- color css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/colors.css"/>--%>
-<%--    &lt;%&ndash;      <!-- select bootstrap -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap-select.css"/>--%>
-<%--    &lt;%&ndash;      <!-- scrollbar css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/perfect-scrollbar.css"/>--%>
-<%--    &lt;%&ndash;      <!-- custom css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/custom.css"/>--%>
-<%--    &lt;%&ndash;      <!--[if lt IE 9]>-->&ndash;%&gt;--%>
-<%--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
-<%--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
+    <%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style01.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- responsive css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- color css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/colors.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- select bootstrap -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap-select.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- scrollbar css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/perfect-scrollbar.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- custom css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/custom.css"/>--%>
+    <%--    &lt;%&ndash;      <!--[if lt IE 9]>-->&ndash;%&gt;--%>
+    <%--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
+    <%--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
     <%--      <![endif]-->--%>
 </head>
 <body class="dashboard dashboard_1">
@@ -3499,7 +3507,7 @@
                         </div>
                         <div class="col-lg-6 mt-3">
                             <label for="salle_id" class="mr-sm-2">Salle :</label>
-                            <select type="text" class="form-control mb-2 mr-sm-2" id="salle_id">
+                            <select class="form-control mb-2 mr-sm-2" id="salle_id">
                             </select>
                         </div>
                         <div class="col-lg-6 mt-3">
@@ -3510,7 +3518,7 @@
                         </div>
                         <div class="col-lg-6 mt-3">
                             <label for="marque" class="mr-sm-2">Type</label>
-                            <select type="text" class="form-control mb-2 mr-sm-2" id="marque">
+                            <select class="form-control mb-2 mr-sm-2" id="marque">
                                 <option value="Dell">Dell</option>
                                 <option value="Hp">Hp</option>
                                 <option value="Asus">Asus</option>
@@ -3549,12 +3557,23 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th><input type="number" class="form-control find findby_id" target="id"></th>
-                                            <th><input type="text" class="form-control find findby_salle_code" target="salle.code"></th>
-                                            <th><input type="text" class="form-control find findby_type" target="salle.type"></th>
-                                            <th><input type="text" class="form-control find findby_code" target="reference">
-                                            <th><input type="text" class="form-control find findby_code" target="marque">
-                                            <th><input type="text" class="form-control find findby_code" target="date_achat">
+
+                                            <th><input type="number" class="form-control find findby_id" target="id">
+                                            </th>
+                                            <th>
+                                                <select type="text" class="form-control find findby_salle"
+                                                        target="salle.code">
+                                                    <option></option>
+                                                </select>
+                                            </th>
+                                            <th><input type="text" class="form-control find findby_reference"
+                                                       target="salle.type"></th>
+                                            <th><input type="text" class="form-control find findby_marque"
+                                                       target="reference">
+                                            <th><input type="text" class="form-control find findby_date_achat"
+                                                       target="marque">
+                                            <th><input type="text" class="form-control find findby_prix"
+                                                       target="date_achat">
                                             <th><input type="date" class="form-control find findby_created_at"
                                                        target="created_at"></th>
                                         </tr>
@@ -3695,13 +3714,11 @@
         $(document).on('click', '.table_row', function (e) {
             $('#salle_id').val($(this).children('td:nth-child(2)').attr('salle_id'))
             $('#reference').val($(this).children('td:nth-child(4)').text())
-            $('#type').val($(this).children('td:nth-child(5)').text())
+            $('#marque').val($(this).children('td:nth-child(5)').text())
             $('#prix').val($(this).children('td:nth-child(6)').text())
-            // let date=new Date($(this).children('td:nth-child(7)').text());
-//             let nwwdate=Date.parse($(this).children('td:nth-child(6)').text()).toString("yyyy-MM-dd")
             $('#date_achat').val($(this).children('td:nth-child(7)').text())
+
             $('#update_machine_id').val($(this).children('td:nth-child(1)').text())
-            // alert(date.ge())
 
             $('#update_button').show()
 
@@ -3709,7 +3726,7 @@
         $(document).on('click', function (e) {
             if ($(e.target).closest(".table_row").length === 0 &&
                 $(e.target).closest("#salle_id").length === 0 && $(e.target).closest("#reference").length === 0
-                && $(e.target).closest("#marque").length === 0&& $(e.target).closest("#prix").length === 0
+                && $(e.target).closest("#marque").length === 0 && $(e.target).closest("#prix").length === 0
                 && $(e.target).closest("#date_achat").length === 0) {
                 $('#update_machine_id').val("")
                 $('#update_button').hide()
@@ -3723,7 +3740,7 @@
             let marque = $('#marque').val()
             let date_achat = $('#date_achat').val()
             let prix = $('#prix').val()
-            if (salle === '' || reference === '' || marque === '' || date_achat === '' || prix === '' ) {
+            if (salle === '' || reference === '' || marque === '' || date_achat === '' || prix === '') {
                 $('#error_message').text('Fill the inputs first')
             } else {
                 $('#error_message').text('')
@@ -3754,14 +3771,19 @@
 
             }
         })
-        $(document).on('keyup', '.find', function () {
+        $(document).on('keyup change', '.find', function () {
+
             $.ajax({
-                url: "<%=request.getContextPath()%>/salles?op=getdatafiltred",
+                url: "<%=request.getContextPath()%>/machines?op=getdatafiltred",
                 data: {
-                    'id':$('.findby_id').val(),
-                    'code':$('.findby_code').val(),
-                    'type':$('.findby_type').val(),
-                    'created_at':$('.findby_created_at').val(),
+                    'id': $('.findby_id').val(),
+                    'salle': $('.findby_salle').val(),
+                    'reference': $('.findby_reference').val(),
+                    'marque': $('.findby_marque').val(),
+                    'date_achat': $('.findby_date_achat').val(),
+                    'prix': $('.findby_prix').val(),
+                    'created_at': $('.findby_prix').val(),
+
                 },
                 type: 'POST',
                 success: function (data) {
@@ -3788,10 +3810,10 @@
                 success: function (data) {
                     html = "";
                     for (var i = 0; i < data.length; i++) {
-                        let nwwdate=Date.parse(data[i].created_at).toString("yyyy-MM-dd")
+                        let nwwdate = Date.parse(data[i].dateAchat).toString("yyyy-MM-dd")
 
-                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + '</td><td salle_id="'+data[i].salle.id+'">' + data[i].salle.code + "</td><td>" + data[i].salle.type +
-                            "</td><td>" + data[i].reference + "</td>" + "</td><td>" + data[i].marque + "</td>" + "</td><td>" + data[i].prix + "</td><td>" + nwwdate + "</td>" +  "</td><td>" + data[i].created_at + "</td>" +'<td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
+                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + '</td><td salle_id="' + data[i].salle.id + '">' + data[i].salle.code + "</td><td>" + data[i].salle.type +
+                            "</td><td>" + data[i].reference + "</td>" + "</td><td>" + data[i].marque + "</td>" + "</td><td>" + data[i].prix + "</td><td>" + nwwdate + "</td>" + "</td><td>" + data[i].created_at + "</td>" + '<td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
                     }
                     $("#table_content").html(html);
                 },
@@ -3809,10 +3831,10 @@
                 success: function (data) {
                     html = "";
                     for (var i = 0; i < data.length; i++) {
-                        html+='<option value="'+data[i].id+'"> '+data[i].code+'</option>'
+                        html += '<option value="' + data[i].id + '"> ' + data[i].code + '</option>'
                     }
                     $("#salle_id").html(html);
-
+                    $('.findby_salle').append(html);
                 },
                 error: function (e) {
                     console.log(e.responseText);

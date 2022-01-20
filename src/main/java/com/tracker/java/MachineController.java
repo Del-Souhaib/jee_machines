@@ -64,63 +64,52 @@ public class MachineController extends HttpServlet {
             List<Machine> salles = ms.findAll();
             Gson json = new Gson();
             response.getWriter().write(json.toJson(salles));
-        }
-        else if (request.getParameter("op").equals("create")) {
+        } else if (request.getParameter("op").equals("create")) {
             boolean state = ms.create(new Machine(request.getParameter("reference")
-                    , new Date(request.getParameter("date_achat").replace("-","/"))
+                    , new Date(request.getParameter("date_achat").replace("-", "/"))
                     , Double.parseDouble(request.getParameter("prix"))
-                    ,ss.findById(Integer.parseInt(request.getParameter("salle_id")))
-                    ,request.getParameter("marque")));
+                    , ss.findById(Integer.parseInt(request.getParameter("salle_id")))
+                    , request.getParameter("marque")));
             out.println(state);
-        }
-        else if (request.getParameter("op").equals("delete")) {
+        } else if (request.getParameter("op").equals("delete")) {
             boolean state = ms.delete(ms.findById(Integer.parseInt(request.getParameter("id"))));
             out.println(state);
-        }
-        else if (request.getParameter("op").equals("update")) {
-            Machine machine = ms.findById(Integer.parseInt(request.getParameter("id")));
-            machine.setMarque(request.getParameter("marque"));
-            machine.setDateAchat(new Date(request.getParameter("date_achat")));
-            machine.setPrix(Double.parseDouble(request.getParameter("prix")));
-            machine.setReference(request.getParameter("reference"));
-            machine.setSalle(ss.findById(Integer.parseInt(request.getParameter("salle"))));
+        } else if (request.getParameter("op").equals("update")) {
+                Machine machine = ms.findById(Integer.parseInt(request.getParameter("id")));
+                machine.setMarque(request.getParameter("marque"));
+                machine.setDateAchat(new Date(request.getParameter("date_achat").replace("-", "/")));
+                machine.setPrix(Double.parseDouble(request.getParameter("prix")));
+                machine.setReference(request.getParameter("reference"));
+                machine.setSalle(ss.findById(Integer.parseInt(request.getParameter("salle"))));
 
-            boolean state = ms.update(machine);
-            out.println(state);
+                boolean state = ms.update(machine);
+                out.println(state);
+
         }
-//        else if (request.getParameter("op").equals("getdatafiltred")) {
-//            response.setContentType("application/json");
-//            int id;
-//            Date created_at=new Date();
-//
-//            if (!request.getParameter("id").equals("")) {
-//                id = Integer.parseInt(request.getParameter("id"));
-//            } else {
-//                id = 0;
-//            }
-//
-////            if (!Objects.equals(request.getParameter("created_at"), "")
-////                    || request.getParameter("created_at") != null) {
-////                created_at = new Date(request.getParameter("created_at").replace("-", "/"));
-////
-////            } else {
-////                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-////                String date_string = "0000-00-00";
-////                try {
-////                    created_at=formatter.parse(date_string);
-////                } catch (ParseException e) {
-////                    e.printStackTrace();
-////                }
-////            }
-//            String code = request.getParameter("code");
-//            String type = request.getParameter("type");
-//            List<Salle> salles = ms.findFilitred(new Salle(id, code, type));
-////            List<Salle> salles = ms.findFilitred(new Salle(id, code, type,created_at));
-//            Gson json = new Gson();
-//            response.getWriter().write(json.toJson(salles));
-////            }
-//        }
-    }
+        else if (request.getParameter("op").equals("getdatafiltred")) {
+            response.setContentType("application/json");
+            int id;
+          //  Date created_at=new Date();
+
+            if (!request.getParameter("id").equals("")) {
+                id = Integer.parseInt(request.getParameter("id"));
+            } else {
+                id = 0;
+            }
+
+            int salle = Integer.parseInt(request.getParameter("code"));
+            String reference = request.getParameter("type");
+            String marque = request.getParameter("type");
+            Date date_achat =new Date(request.getParameter("type"));
+            double prix = Double.parseDouble(request.getParameter("type"));
+            Date created_at =new Date(request.getParameter("created_at"));
+          //  List<Machine> machines = ms.findFilitred(new Machine(id,reference,date_achat,prix,ss.findById(salle), marque,created_at));
+            Gson json = new Gson();
+            out.println("good");
+         //   response.getWriter().write(json.toJson(machines));
+            }
+        }
+
 
     /**
      * Returns a short description of the servlet.
