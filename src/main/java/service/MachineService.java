@@ -215,4 +215,20 @@ public class MachineService implements IDao<Machine> {
         return machines;
     }
 
+    public int count() {
+        String sql = "select count(*) as machin_total from machines ";
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("machin_total");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("findAll " + e.getMessage());
+        }
+        return 0;
+    }
 }

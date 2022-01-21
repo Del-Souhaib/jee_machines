@@ -26,7 +26,7 @@ public class UserService implements IDao<User> {
             if (ps.executeUpdate() == 1) {
                 return true;
             }
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("create : erreur sql : " + e.getMessage());
 
         }
@@ -63,7 +63,7 @@ public class UserService implements IDao<User> {
             if (ps.executeUpdate() == 1) {
                 return true;
             }
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("update : erreur sql : " + e.getMessage());
 
         }
@@ -109,12 +109,13 @@ public class UserService implements IDao<User> {
                         , rs.getString("email"), rs.getString("password"));
             }
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("findById " + e.getMessage());
         }
         return null;
     }
-    public User findByEmail_Password(String email,String password) {
+
+    public User findByEmail_Password(String email, String password) {
         String sql = "select * from users where email  = ? and password =? limit 1";
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
@@ -125,16 +126,16 @@ public class UserService implements IDao<User> {
             if (rs.next()) {
                 return new User(rs.getInt("id"), rs.getString("name")
                         , rs.getString("email"), rs.getString("password"));
-            }
-            else{
+            } else {
                 return null;
             }
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("findById " + e.getMessage());
         }
         return null;
     }
+
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<User>();
@@ -148,12 +149,27 @@ public class UserService implements IDao<User> {
                         , rs.getString("email"), rs.getString("password")));
             }
 
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("findAll " + e.getMessage());
         }
         return users;
     }
-    
 
 
+    public int count() {
+        String sql = "select count(*) as user_total from users ";
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("user_total");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("findAll " + e.getMessage());
+        }
+        return 0;
+    }
 }

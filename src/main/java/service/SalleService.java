@@ -3,6 +3,7 @@ package service;
 import beans.Machine;
 import beans.Salle;
 
+import com.google.gson.Gson;
 import connexion.Connexion;
 import dao.IDao;
 
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SalleService implements IDao<Salle> {
@@ -79,7 +81,7 @@ public class SalleService implements IDao<Salle> {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return new Salle(rs.getInt("id"), rs.getString("code"), rs.getString("type"),rs.getDate("created_at"));
+                return new Salle(rs.getInt("id"), rs.getString("code"), rs.getString("type"), rs.getDate("created_at"));
             }
 
         } catch (SQLException e) {
@@ -94,10 +96,11 @@ public class SalleService implements IDao<Salle> {
 
         String sql = "select * from salles";
         try {
-            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);;
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            ;
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                salles.add(new Salle(rs.getInt("id"), rs.getString("code"), rs.getString("type"),rs.getDate("created_at")));
+                salles.add(new Salle(rs.getInt("id"), rs.getString("code"), rs.getString("type"), rs.getDate("created_at")));
             }
 
         } catch (SQLException e) {
@@ -106,34 +109,33 @@ public class SalleService implements IDao<Salle> {
         return salles;
     }
 
-    public List<Salle> findFilitred(Salle salle,Boolean created_at) {
+    public List<Salle> findFilitred(Salle salle, Boolean created_at) {
         List<Salle> salles = new ArrayList<Salle>();
         String sql;
-        if(created_at==true){
-             sql= "select * from salles where code like ? and type like ? and created_at like ? ";
-        }
-        else{
-             sql= "select * from salles where code like ? and type like ?  ";
+        if (created_at == true) {
+            sql = "select * from salles where code like ? and type like ? and created_at like ? ";
+        } else {
+            sql = "select * from salles where code like ? and type like ?  ";
         }
 
-        if(salle.getId()!=0){
-             sql += " and id = ? ";
+        if (salle.getId() != 0) {
+            sql += " and id = ? ";
         }
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
-            if(salle.getId()!=0){
-                ps.setInt(4,salle.getId());
+            if (salle.getId() != 0) {
+                ps.setInt(4, salle.getId());
             }
 
-            ps.setString(1, ("%"+salle.getCode()+"%"));
-            ps.setString(2, ("%"+ salle.getType()+"%"));
-            if(created_at){
+            ps.setString(1, ("%" + salle.getCode() + "%"));
+            ps.setString(2, ("%" + salle.getType() + "%"));
+            if (created_at) {
                 ps.setDate(3, (new Date(salle.getCreated_at().getTime())));
             }
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                salles.add(new Salle(rs.getInt("id"), rs.getString("code"), rs.getString("type"),rs.getDate("created_at")));
+                salles.add(new Salle(rs.getInt("id"), rs.getString("code"), rs.getString("type"), rs.getDate("created_at")));
             }
 
         } catch (SQLException e) {
@@ -142,5 +144,37 @@ public class SalleService implements IDao<Salle> {
         return salles;
     }
 
+    public int count() {
+        String sql = "select count(*) as salle_toal from salles ";
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
 
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("salle_toal");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("findAll " + e.getMessage());
+        }
+        return 0;
+
+    }
+
+    public HashMap<String, Integer> machine_per_salle() {
+        String sql = "SELECT s.code,(select COUNT(*) from machines m where m.salle_id=s.id) as nb FROM salles s";
+        HashMap<String, Integer> data = new HashMap<>();
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                data.put(rs.getString("code"), rs.getInt("nb"));
+            }
+        } catch (SQLException e) {
+            System.out.println("findAll " + e.getMessage());
+        }
+        return data;
+    }
 }

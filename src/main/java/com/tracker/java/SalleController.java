@@ -57,7 +57,7 @@ public class SalleController extends HttpServlet {
             int id;
             String code = request.getParameter("code");
             String type = request.getParameter("type");
-            Date date=new Date();
+            Date date = new Date();
 
             if (!request.getParameter("id").equals("")) {
                 id = Integer.parseInt(request.getParameter("id"));
@@ -66,14 +66,14 @@ public class SalleController extends HttpServlet {
             }
             List<Salle> salles;
             if (!request.getParameter("created_at").equals("")) {
-                 date=new Date(request.getParameter("created_at").replace("-", "/"));
-                salles = sv.findFilitred(new Salle(id, code, type,date),true);
+                date = new Date(request.getParameter("created_at").replace("-", "/"));
+                salles = sv.findFilitred(new Salle(id, code, type, date), true);
             } else {
-                 salles = sv.findFilitred(new Salle(id, code, type,date),false);
+                salles = sv.findFilitred(new Salle(id, code, type, date), false);
             }
-out.println(request.getParameter("created_at"));
+            out.println(request.getParameter("created_at"));
             Gson json = new Gson();
-           // response.getWriter().write(json.toJson(salles));
+            // response.getWriter().write(json.toJson(salles));
         }
     }
 }

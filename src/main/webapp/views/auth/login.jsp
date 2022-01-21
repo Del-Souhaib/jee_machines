@@ -3476,7 +3476,7 @@
             <div class="login_section">
                 <div class="logo_login">
                     <div class="center">
-                        <img width="210" src="<%=request.getContextPath()%>/assets/images/logo/logo.png" alt="#"/>
+                        <img width="210" src="${pageContext.request.contextPath}/assets/images/logo/logo.png" alt="#"/>
                     </div>
                 </div>
                 <div class="login_form">

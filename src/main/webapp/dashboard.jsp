@@ -12,8 +12,8 @@
     <!-- site icon -->
     <%--      <link rel="icon" href="<%=request.getContextPath()%>/images/fevicon.png" type="image/png" />--%>
     <!-- bootstrap css -->
-<%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/WEB-INF/assets/css/bootstrap.min.css"/>--%>
-<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">--%>
+    <%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/WEB-INF/assets/css/bootstrap.min.css"/>--%>
+    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">--%>
     <!-- site css -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -32,7 +32,7 @@
             integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     <style>
         /*------------------------------------------------------------------
    File Name: style.css
@@ -3458,20 +3458,572 @@
         }
 
     </style>
-<%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style01.css"/>--%>
-<%--    &lt;%&ndash;      <!-- responsive css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css"/>--%>
-<%--    &lt;%&ndash;      <!-- color css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/colors.css"/>--%>
-<%--    &lt;%&ndash;      <!-- select bootstrap -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap-select.css"/>--%>
-<%--    &lt;%&ndash;      <!-- scrollbar css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/perfect-scrollbar.css"/>--%>
-<%--    &lt;%&ndash;      <!-- custom css -->&ndash;%&gt;--%>
-<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/custom.css"/>--%>
-<%--    &lt;%&ndash;      <!--[if lt IE 9]>-->&ndash;%&gt;--%>
-<%--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
-<%--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
+    <style>
+        /*------------------------------------------------------------------
+    File Name: responsive.css
+    Template Name: Pluto - Responsive HTML5 Template
+    Created By: html.design
+    Envato Profile: https://themeforest.net/user/htmldotdesign
+    Website: https://html.design
+    Version: 1.0
+-------------------------------------------------------------------*/
+
+
+        /*-----------------------------------
+          sidebar small only desktop
+        -----------------------------------*/
+
+        @media (min-width: 1200px) {
+            /*-- small sidebar --*/
+            #sidebar.active {
+                min-width: 90px;
+                max-width: 90px;
+                text-align: center;
+            }
+
+            #sidebar.active .sidebar-header h3,
+            #sidebar.active .CTAs {
+                display: none;
+            }
+
+            #sidebar.active .sidebar-header strong {
+                display: block;
+            }
+
+            #sidebar.active ul li a {
+                padding: 10px 0;
+                float: left;
+                width: 100%;
+                text-align: center;
+            }
+
+            #sidebar.active ul li a i {
+                width: 100%;
+                text-align: center;
+                margin: 0 0 5px 0;
+                font-size: 24px;
+            }
+
+            #sidebar.active ul ul a {
+                padding: 10px !important;
+            }
+
+            #sidebar.active .dropdown-toggle::after {
+                display: none;
+            }
+
+            nav#sidebar.active .logo_big {
+                text-align: center;
+                padding: 8px 0 7px;
+            }
+
+            #sidebar.active .logo_big img {
+                height: 45px;
+            }
+
+            #sidebar.active .logo_section {
+                padding: 0;
+                margin-bottom: 10px;
+                background: #fff;
+                width: 100%;
+            }
+
+            #sidebar.active ul.components {
+                padding: 0;
+            }
+
+            #sidebar.active .logo_big {
+                display: none;
+            }
+
+            .logo_icon {
+                display: none;
+            }
+
+            #sidebar.active .logo_icon {
+                display: block;
+            }
+
+            #sidebar.active .logo_big img {
+                height: 45px;
+            }
+
+            #sidebar.active h4 {
+                display: none;
+            }
+
+            #sidebar.active .sidebar_user_info {
+                display: none;
+            }
+
+            #sidebar.active ul li a span {
+                font-size: 13px;
+            }
+
+            #sidebar ul li a i {
+            }
+        }
+
+
+        /*-----------------------------------
+          end sidebar small only desktop
+        -----------------------------------*/
+
+        @media (min-width: 1200px) and (max-width: 1600px) {
+            .counter_section {
+                display: block;
+            }
+
+            .couter_icon {
+                display: block;
+                width: 100%;
+            }
+
+            .couter_icon > div {
+                padding-right: 0;
+            }
+
+            .counter_no p.total_no {
+                text-align: center;
+            }
+
+            .counter_no .head_couter {
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .counter_section {
+                display: block;
+            }
+
+            .couter_icon {
+                display: block;
+                width: 100%;
+            }
+
+            .couter_icon > div {
+                padding-right: 0;
+            }
+
+            .counter_no p.total_no {
+                text-align: center;
+            }
+
+            .counter_no .head_couter {
+                text-align: center;
+                font-size: 16px;
+            }
+
+            .dashboard_2 .social_cont ul li {
+                padding: 0;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .info_people .user_info_cont {
+                width: 60%;
+                padding-left: 30px;
+                padding-top: 0;
+            }
+
+            .fw_icon {
+                width: 33.33%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .padding_infor_info {
+                padding: 20px 20px;
+            }
+
+            .payment_option li {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 1199px) {
+            * {
+                box-sizing: border-box;
+            }
+
+            #sidebar {
+                min-width: 80px;
+                max-width: 80px;
+                text-align: center;
+                margin-left: -80px !important;
+            }
+
+            #sidebar.active {
+                margin-left: 0 !important;
+            }
+
+            #sidebar .sidebar-header h3,
+            #sidebar .CTAs {
+                display: none;
+            }
+
+            #sidebar .sidebar-header strong {
+                display: block;
+            }
+
+            /*-- responsive --*/
+            #sidebar.active + #content .topbar {
+                transition: ease all 0.3s;
+            }
+
+            .topbar {
+                padding-left: 0;
+                min-width: 320px;
+            }
+
+            #sidebar.active + #content .topbar {
+                padding-left: 0;
+                min-width: 320px;
+                left: 250px;
+            }
+
+            #content {
+                padding: 60px 15px 25px 15px;
+            }
+
+            #sidebar.active {
+                min-width: 250px;
+                max-width: 250px;
+                text-align: left;
+            }
+
+            #sidebar.active + #content {
+                padding-left: 0;
+                left: 250px;
+                position: relative;
+                min-width: 320px;
+                height: auto;
+                transition: ease all 0.3s;
+            }
+
+            .right_topbar .icon_info ul.user_profile_dd {
+                display: none;
+            }
+
+            .right_topbar {
+                float: right;
+                padding: 0;
+                margin: 5px 15px 5px 0;
+            }
+
+            .sidebar_toggle {
+                padding: 14px 22px 13px;
+            }
+
+            .logo_section img {
+                height: 38px;
+                padding: 0;
+                margin: 12px 0 0 15px;
+            }
+
+            .icon_info ul li {
+                width: 30px;
+            }
+
+            .icon_info ul li a {
+                font-size: 16px;
+            }
+
+            .logo_section img.logo_icon {
+                display: none;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .icon_info ul li {
+                margin: 15px 0 0 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .counter_section {
+                padding: 30px 25px;
+            }
+
+            .counter_no {
+                padding: 0;
+            }
+
+            .counter_no .head_couter {
+                font-size: 16px;
+            }
+
+            #testimonial_slider.carousel .carousel-control {
+                top: -35px;
+            }
+
+            .content.testimonial {
+                margin-top: 50px;
+            }
+
+            #testimonial_slider.carousel .testimonial {
+                font-size: 13px;
+                line-height: normal;
+            }
+
+            .progress_bar {
+                padding: 15px 25px 50px 25px;
+            }
+
+            .dash_head {
+                padding: 30px 30px 25px;
+            }
+
+            .task_list li {
+                padding: 20px 30px;
+            }
+
+            .task_list li a {
+                color: #99abb4;
+                font-size: 15px;
+                line-height: normal;
+                margin-bottom: 10px;
+                float: left;
+                width: 100%;
+            }
+
+            .msg_list_main ul li {
+                display: block;
+            }
+
+            .msg_list_main ul li > span:nth-child(1) {
+                margin-right: 20px;
+                margin-bottom: 10px;
+            }
+
+            /*----- widgets page css -----*/
+            .info_people {
+                padding: 25px;
+                display: block;
+            }
+
+            .info_people .p_info_img {
+                width: 100%;
+                text-align: center;
+            }
+
+            .info_people .p_info_img img {
+                width: 90px;
+            }
+
+            .info_people .user_info_cont {
+                width: 100%;
+                padding-left: 0;
+                padding-top: 25px;
+                text-align: center;
+            }
+
+            .calendar {
+                overflow: auto;
+            }
+
+            /** accordian css **/
+            .tab_style3 .tabbar {
+                display: block;
+            }
+
+            .tab_style3 #v-pills-tabContent {
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 25px;
+            }
+
+            .pagination.button_section {
+                display: block;
+            }
+
+            .pagination.button_section .btn-group {
+                margin: 5px 0 0;
+            }
+
+            .fw_icon {
+                width: 50%;
+            }
+
+            /**-- email page --**/
+            .mail-box {
+                float: left;
+                width: 100%;
+            }
+
+            .mail-box .sm-side {
+                width: 100%;
+                float: left;
+            }
+
+            .mail-box .lg-side {
+                background: none repeat scroll 0 0 #fff;
+                border-radius: 0 4px 4px 0;
+                width: 100%;
+                float: left;
+                overflow: auto;
+            }
+
+            aside.lg-side .inbox-body {
+                min-width: 565px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .table.table-striped.projects {
+                min-width: 780px;
+            }
+
+            /** login page **/
+            .full_height {
+                height: auto;
+            }
+
+            .login_section {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+
+            .login_form form .field input {
+                max-width: 395px;
+                width: 100%;
+            }
+
+            .login_form form .field label.label_field {
+                text-align: left;
+            }
+
+            .login_form form .field {
+                display: block;
+                margin: 0 0 20px;
+                float: left;
+                width: 100%;
+            }
+
+            .label_field.hidden {
+                display: none;
+            }
+
+            .login_form form .field .form-check-label {
+                float: left;
+                width: 100%;
+            }
+
+            .forgot {
+                float: left;
+            }
+
+            .error_page h3 {
+                font-size: 36px;
+                line-height: 45px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .model_bt {
+                padding: 11px 0 10px;
+                width: 100%;
+            }
+
+            .fw_icon {
+                width: 100%;
+            }
+
+            aside .inbox-head .position.search_inbox {
+                display: none;
+            }
+
+            .contact_inner .left {
+                width: 100%;
+                float: left;
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .contact_inner .right {
+                width: 100%;
+                float: left;
+            }
+
+            .bottom_list .right_button {
+                float: right;
+                display: flex;
+            }
+
+            .bottom_list .right_button button {
+                margin: 0 0 0 5px;
+            }
+
+            .dis_flex {
+                display: block;
+                margin: 0;
+            }
+
+            .dis_flex .profile_img {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style01.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- responsive css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- color css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/colors.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- select bootstrap -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap-select.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- scrollbar css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/perfect-scrollbar.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- custom css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/custom.css"/>--%>
+    <%--    &lt;%&ndash;      <!--[if lt IE 9]>-->&ndash;%&gt;--%>
+    <%--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
+    <%--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
     <%--      <![endif]-->--%>
 </head>
 <body class="dashboard dashboard_1">
@@ -3505,8 +4057,8 @@
                                 </div>
                                 <div class="counter_no">
                                     <div>
-                                        <p class="total_no">2500</p>
-                                        <p class="head_couter">Welcome</p>
+                                        <p class="total_no" id="user_count">2500</p>
+                                        <p class="head_couter">Users</p>
                                     </div>
                                 </div>
                             </div>
@@ -3515,13 +4067,13 @@
                             <div class="full counter_section margin_bottom_30">
                                 <div class="couter_icon">
                                     <div>
-                                        <i class="fa fa-clock-o blue1_color"></i>
+                                        <i class="fa fa-building blue1_color"></i>
                                     </div>
                                 </div>
                                 <div class="counter_no">
                                     <div>
-                                        <p class="total_no">123.50</p>
-                                        <p class="head_couter">Average Time</p>
+                                        <p class="total_no" id="salle_count">123.50</p>
+                                        <p class="head_couter">Salles</p>
                                     </div>
                                 </div>
                             </div>
@@ -3530,13 +4082,13 @@
                             <div class="full counter_section margin_bottom_30">
                                 <div class="couter_icon">
                                     <div>
-                                        <i class="fa fa-cloud-download green_color"></i>
+                                        <i class="fa fa-desktop green_color"></i>
                                     </div>
                                 </div>
                                 <div class="counter_no">
                                     <div>
-                                        <p class="total_no">1,805</p>
-                                        <p class="head_couter">Collections</p>
+                                        <p class="total_no" id="machine_count">1,805</p>
+                                        <p class="head_couter">Machines</p>
                                     </div>
                                 </div>
                             </div>
@@ -3550,87 +4102,9 @@
                                 </div>
                                 <div class="counter_no">
                                     <div>
-                                        <p class="total_no">54</p>
-                                        <p class="head_couter">Comments</p>
+                                        <p class="total_no" id="salle_machine_count">54</p>
+                                        <p class="head_couter">Salle/machine</p>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row column1 social_media_section">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="full socile_icons fb margin_bottom_30">
-                                <div class="social_icon">
-                                    <i class="fa fa-facebook"></i>
-                                </div>
-                                <div class="social_cont">
-                                    <ul>
-                                        <li>
-                                            <span><strong>35k</strong></span>
-                                            <span>Friends</span>
-                                        </li>
-                                        <li>
-                                            <span><strong>128</strong></span>
-                                            <span>Feeds</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="full socile_icons tw margin_bottom_30">
-                                <div class="social_icon">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                                <div class="social_cont">
-                                    <ul>
-                                        <li>
-                                            <span><strong>584k</strong></span>
-                                            <span>Followers</span>
-                                        </li>
-                                        <li>
-                                            <span><strong>978</strong></span>
-                                            <span>Tweets</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="full socile_icons linked margin_bottom_30">
-                                <div class="social_icon">
-                                    <i class="fa fa-linkedin"></i>
-                                </div>
-                                <div class="social_cont">
-                                    <ul>
-                                        <li>
-                                            <span><strong>758+</strong></span>
-                                            <span>Contacts</span>
-                                        </li>
-                                        <li>
-                                            <span><strong>365</strong></span>
-                                            <span>Feeds</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="full socile_icons google_p margin_bottom_30">
-                                <div class="social_icon">
-                                    <i class="fa fa-google-plus"></i>
-                                </div>
-                                <div class="social_cont">
-                                    <ul>
-                                        <li>
-                                            <span><strong>450</strong></span>
-                                            <span>Followers</span>
-                                        </li>
-                                        <li>
-                                            <span><strong>57</strong></span>
-                                            <span>Circles</span>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -3641,7 +4115,7 @@
                             <div class="white_shd full">
                                 <div class="full graph_head">
                                     <div class="heading1 margin_0">
-                                        <h2>Extra Area Chart</h2>
+                                        <h2>Chart</h2>
                                     </div>
                                 </div>
                                 <div class="full graph_revenue">
@@ -3649,7 +4123,7 @@
                                         <div class="col-md-12">
                                             <div class="content">
                                                 <div class="area_chart">
-                                                    <canvas height="120" id="canvas"></canvas>
+                                                    <canvas height="120" id="salle_per_machines_chart"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -3659,220 +4133,6 @@
                         </div>
                     </div>
                     <!-- end graph -->
-                    <div class="row column3">
-                        <!-- testimonial -->
-                        <div class="col-md-6">
-                            <div class="dark_bg full margin_bottom_30">
-                                <div class="full graph_head">
-                                    <div class="heading1 margin_0">
-                                        <h2>Testimonial</h2>
-                                    </div>
-                                </div>
-                                <div class="full graph_revenue">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="content testimonial">
-                                                <div id="testimonial_slider" class="carousel slide"
-                                                     data-ride="carousel">
-                                                    <!-- Wrapper for carousel items -->
-                                                    <div class="carousel-inner">
-                                                        <div class="item carousel-item active">
-                                                            <div class="img-box"><img
-                                                                    src="assets/images/layout_img/user_img.jpg" alt="">
-                                                            </div>
-                                                            <p class="testimonial">Sed ut perspiciatis unde omnis iste
-                                                                natus error sit voluptatem accusantium doloremque
-                                                                laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                            <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
-                                                        </div>
-                                                        <div class="item carousel-item">
-                                                            <div class="img-box"><img
-                                                                    src="<%=request.getContextPath()%>/assets/images/layout_img/user_img.jpg"
-                                                                    alt=""></div>
-                                                            <p class="testimonial">Sed ut perspiciatis unde omnis iste
-                                                                natus error sit voluptatem accusantium doloremque
-                                                                laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                            <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
-                                                        </div>
-                                                        <div class="item carousel-item">
-                                                            <div class="img-box"><img
-                                                                    src="<%=request.getContextPath()%>/assets/images/layout_img/user_img.jpg"
-                                                                    alt=""></div>
-                                                            <p class="testimonial">Sed ut perspiciatis unde omnis iste
-                                                                natus error sit voluptatem accusantium doloremque
-                                                                laudantium, totam rem aperiam, eaque ipsa quae..</p>
-                                                            <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Carousel controls -->
-                                                    <a class="carousel-control left carousel-control-prev"
-                                                       href="#testimonial_slider" data-slide="prev">
-                                                        <i class="fa fa-angle-left"></i>
-                                                    </a>
-                                                    <a class="carousel-control right carousel-control-next"
-                                                       href="#testimonial_slider" data-slide="next">
-                                                        <i class="fa fa-angle-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end testimonial -->
-                        <!-- progress bar -->
-                        <div class="col-md-6">
-                            <div class="white_shd full margin_bottom_30">
-                                <div class="full graph_head">
-                                    <div class="heading1 margin_0">
-                                        <h2>Progress Bar</h2>
-                                    </div>
-                                </div>
-                                <div class="full progress_bar_inner">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="progress_bar">
-                                                <!-- Skill Bars -->
-                                                <span class="skill" style="width:73%;">Facebook <span
-                                                        class="info_valume">73%</span></span>
-                                                <div class="progress skill-bar ">
-                                                    <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                                         role="progressbar" aria-valuenow="73" aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 73%;">
-                                                    </div>
-                                                </div>
-                                                <span class="skill" style="width:62%;">Twitter <span
-                                                        class="info_valume">62%</span></span>
-                                                <div class="progress skill-bar">
-                                                    <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                                         role="progressbar" aria-valuenow="62" aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 62%;">
-                                                    </div>
-                                                </div>
-                                                <span class="skill" style="width:54%;">Instagram <span
-                                                        class="info_valume">54%</span></span>
-                                                <div class="progress skill-bar">
-                                                    <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                                         role="progressbar" aria-valuenow="54" aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 54%;">
-                                                    </div>
-                                                </div>
-                                                <span class="skill" style="width:82%;">Google plus <span
-                                                        class="info_valume">82%</span></span>
-                                                <div class="progress skill-bar">
-                                                    <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                                         role="progressbar" aria-valuenow="82" aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 82%;">
-                                                    </div>
-                                                </div>
-                                                <span class="skill" style="width:48%;">Other <span class="info_valume">48%</span></span>
-                                                <div class="progress skill-bar">
-                                                    <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                                         role="progressbar" aria-valuenow="48" aria-valuemin="0"
-                                                         aria-valuemax="100" style="width: 48%;">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end progress bar -->
-                    </div>
-                    <div class="row column4 graph">
-                        <div class="col-md-6">
-                            <div class="dash_blog">
-                                <div class="dash_blog_inner">
-                                    <div class="dash_head">
-                                        <h3><span><i class="fa fa-calendar"></i> 6 July 2018</span><span
-                                                class="plus_green_bt"><a href="#">+</a></span></h3>
-                                    </div>
-                                    <div class="list_cont">
-                                        <p>Today Tasks for Ronney Jack</p>
-                                    </div>
-                                    <div class="task_list_main">
-                                        <ul class="task_list">
-                                            <li><a href="#">Meeting about plan for Admin Template 2018</a><br><strong>10:00
-                                                AM</strong></li>
-                                            <li><a href="#">Create new task for Dashboard</a><br><strong>10:00
-                                                AM</strong></li>
-                                            <li><a href="#">Meeting about plan for Admin Template 2018</a><br><strong>11:00
-                                                AM</strong></li>
-                                            <li><a href="#">Create new task for Dashboard</a><br><strong>10:00
-                                                AM</strong></li>
-                                            <li><a href="#">Meeting about plan for Admin Template 2018</a><br><strong>02:00
-                                                PM</strong></li>
-                                        </ul>
-                                    </div>
-                                    <div class="read_more">
-                                        <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="dash_blog">
-                                <div class="dash_blog_inner">
-                                    <div class="dash_head">
-                                        <h3><span><i class="fa fa-comments-o"></i> Updates</span><span
-                                                class="plus_green_bt"><a href="#">+</a></span></h3>
-                                    </div>
-                                    <div class="list_cont">
-                                        <p>User confirmation</p>
-                                    </div>
-                                    <div class="msg_list_main">
-                                        <ul class="msg_list">
-                                            <li>
-                                                <span><img
-                                                        src="<%=request.getContextPath()%>/assets/images/layout_img/msg2.png"
-                                                        class="img-responsive" alt="#"/></span>
-                                                <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
-                                          <span class="time_ago">12 min ago</span>
-                                          </span>
-                                            </li>
-                                            <li>
-                                                <span><img
-                                                        src="<%=request.getContextPath()%>/assets/images/layout_img/msg3.png"
-                                                        class="img-responsive" alt="#"/></span>
-                                                <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">On the other hand, we denounce.</span>
-                                          <span class="time_ago">12 min ago</span>
-                                          </span>
-                                            </li>
-                                            <li>
-                                                <span><img
-                                                        src="<%=request.getContextPath()%>/assets/images/layout_img/msg2.png"
-                                                        class="img-responsive" alt="#"/></span>
-                                                <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
-                                          <span class="time_ago">12 min ago</span>
-                                          </span>
-                                            </li>
-                                            <li>
-                                                <span><img
-                                                        src="<%=request.getContextPath()%>/assets/images/layout_img/msg3.png"
-                                                        class="img-responsive" alt="#"/></span>
-                                                <span>
-                                          <span class="name_user">John Smith</span>
-                                          <span class="msg_user">On the other hand, we denounce.</span>
-                                          <span class="time_ago">12 min ago</span>
-                                          </span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="read_more">
-                                        <div class="center"><a class="main_bt read_bt" href="#">Read More</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- footer -->
                 <%@include file="views/parts/footer.jsp" %>
@@ -3881,6 +4141,96 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+        const myChart = new Chart(
+            document.getElementById('salle_per_machines_chart'),
+            config
+        );
+        load();
+        load2();
+
+        function load() {
+            $.ajax({
+                url: "<%=request.getContextPath()%>/?op=chart1",
+                data: {},
+                type: 'POST',
+                success: function (data) {
+                    console.log(data[0])
+            /*        for (let i = 0; i < data.length; i++) {
+                        console.log(data[i])
+                    }*/
+                },
+                error: function (e) {
+                    console.log(e.responseText);
+                }
+            });
+        }
+
+        function load2() {
+            $.ajax({
+                url: "<%=request.getContextPath()%>/?op=getdata",
+                data: {},
+                type: 'POST',
+                success: function (data) {
+                    console.log(data)
+                    $('#user_count').text(data['nb_user'])
+                    $('#salle_count').text(data['nb_salle'])
+                    $('#machine_count').text(data['nb_machine'])
+                    $('#salle_machine_count').text(data['nb_user'])
+
+                },
+                error: function (e) {
+                    console.log(e.responseText);
+                }
+            });
+        }
+
+    })
+</script>
+
 <!-- jQuery -->
 <%--<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>--%>
 <%--<script src="<%=request.getContextPath()%>/assets/js/popper.min.js"></script>--%>
