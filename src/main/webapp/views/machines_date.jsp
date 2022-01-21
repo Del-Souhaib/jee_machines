@@ -8,11 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Login</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Search Machines</title>
     <!-- site icon -->
+    <%--      <link rel="icon" href="<%=request.getContextPath()%>/images/fevicon.png" type="image/png" />--%>
+    <!-- bootstrap css -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
             crossorigin="anonymous"></script>
@@ -30,6 +29,10 @@
             integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+    <%--    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"/>--%>
+    <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
+    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">--%>
     <!-- site css -->
     <style>
         /*------------------------------------------------------------------
@@ -97,7 +100,7 @@
 
         @import url(<%=request.getContextPath()%> /assets/css/animate.css);
         @import url(<%=request.getContextPath()%> /assets/css/flaticon.css);
-        @import url(<%=request.getContextPath()%> /assets/css/font-awesome.min.css);
+        @import url(<%=request.getContextPath()%> /assets/css/font_awesome.min.css);
 
         /*------------------------------------------------------------------
             3. basic
@@ -332,7 +335,7 @@
         }
 
         .padding_infor_info {
-            padding: 35px 35px;
+            padding: 35px;
             float: left;
             width: 100%;
         }
@@ -495,7 +498,7 @@
 
         .full {
             width: 100%;
-            float: left;
+            /*float: left;*/
         }
 
         .brown_color {
@@ -1777,10 +1780,10 @@
         }
 
         .main_bt {
-            min-width: 125px;
+            min-width: 100px;
             height: auto;
             float: left;
-            background: #1ed085;
+            background: #FF5722;
             text-align: center;
             color: #fff;
             padding: 10px 25px;
@@ -3344,17 +3347,17 @@
             width: 100%;
         }
 
-        .login_form {
+        .login_form form {
             float: left;
             width: 100%;
         }
 
-        .login_form .field {
+        .login_form form .field {
             display: flex;
             margin: 0;
         }
 
-        .login_form .field label.label_field {
+        .login_form form .field label.label_field {
             margin: 0 30px 0 0;
             width: 115px;
             line-height: 45px;
@@ -3364,12 +3367,12 @@
             font-size: 15px;
         }
 
-        .login_form .field {
+        .login_form form .field {
             display: block;
             margin: 0 0 20px;
         }
 
-        .login_form .field input {
+        .login_form form .field input {
             border-top: none;
             border-left: none;
             border-right: none;
@@ -3382,8 +3385,8 @@
             transition: ease all 0.5s;
         }
 
-        .login_form .field input:hover,
-        .login_form .field input:focus {
+        .login_form form .field input:hover,
+        .login_form form .field input:focus {
             box-shadow: none;
         }
 
@@ -3455,90 +3458,243 @@
             min-height: 720px;
         }
 
-    </style>
-
-    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/style01.css"/>--%>
-    <!-- responsive css -->
-
-    <style>
-        .logo_login {
-            background: url('<%=request.getContextPath()%>/assets/images/layout_img/login_image.jpg');
+        .table_row {
+            cursor: pointer !important;
         }
     </style>
-    <!--[if lt IE 9]>
-
-    <![endif]-->
+    <%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style01.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- responsive css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- color css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/colors.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- select bootstrap -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap-select.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- scrollbar css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/perfect-scrollbar.css"/>--%>
+    <%--    &lt;%&ndash;      <!-- custom css -->&ndash;%&gt;--%>
+    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/custom.css"/>--%>
+    <%--    &lt;%&ndash;      <!--[if lt IE 9]>-->&ndash;%&gt;--%>
+    <%--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
+    <%--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
+    <%--      <![endif]-->--%>
 </head>
-<body class="inner_page login">
+<body class="dashboard dashboard_1">
 <div class="full_container">
-    <div class="container">
-        <div class="center verticle_center full_height">
-            <div class="login_section">
-                <div class="logo_login">
-                    <div class="center">
-                        <img width="210" src="<%=request.getContextPath()%>/assets/images/logo/logo.png" alt="#"/>
+    <div class="inner_container">
+        <!-- Sidebar  -->
+        <%@include file="parts/sidenav.jsp" %>
+        <!-- end sidebar -->
+        <!-- right content -->
+        <div id="content">
+            <!-- topbar -->
+            <%@include file="parts/header.jsp" %>
+            <!-- end topbar -->
+            <!-- dashboard inner -->
+            <div class="midde_cont">
+                <div class="container-fluid">
+                    <div class="row column_title">
+                        <div class="col-md-12">
+                            <div class="page_title">
+                                <h2>Machines</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row white_shd full margin_bottom_30 mt-4  pb-5">
+                        <div class="full graph_head">
+                            <div class="heading1 margin_0">
+                                <h2>Search machine date</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 mt-5 d-flex align-items-center">
+                            <label for="date1" class="mr-sm-2 mb-0">Date 1</label>
+                        </div>
+                        <div class="col-lg-4 mt-5">
+                            <input type="date" class="form-control search_date" id="search_date1">
+                        </div>
+                        <div class="col-lg-2 mt-5 d-flex align-items-center">
+                            <label for="date2" class="mr-sm-2 mb-0">Date 2</label>
+                        </div>
+                        <div class="col-lg-4 mt-5">
+                            <input type="date" class="form-control search_date" id="search_date2">
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <p class="mb-3 text-danger" id="error_message"></p>
+                            <button class="main_bt mr-5" id="search_button" style="display: none">Search</button>
+                        </div>
+                    </div>
+                    <input type="hidden" id="update_machine_id"/>
+                    <div class="row">
+                        <div class="white_shd full margin_bottom_30">
+                            <div class="full graph_head">
+                                <div class="heading1 margin_0">
+                                    <h2>Liste of machines</h2>
+                                </div>
+                            </div>
+                            <div class="table_section padding_infor_info" style="font-size: 12px">
+                                <div class="table-responsive-sm">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Salle code</th>
+                                            <th>Salle type</th>
+                                            <th>Reference</th>
+                                            <th>Marque</th>
+                                            <th>Prix</th>
+                                            <th>Date achat</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="table_content">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="login_form">
-                    <div>
-                        <fieldset>
-                            <div class="field">
-                                <label class="label_field">Email Address</label>
-                                <input type="email" required name="email" id="email" placeholder="E-mail"/>
-                            </div>
-                            <div class="field">
-                                <label class="label_field">Password</label>
-                                <input type="password" required name="password" id="password" placeholder="Password"/>
-                            </div>
-                            <div class="field">
-                                <label class="label_field hidden">hidden label</label>
-                                <label class="form-check-label"><input type="checkbox" class="form-check-input">
-                                    Remember Me</label>
-                                <p id="error_mssg" class="text-danger"></p>
-                            </div>
-                            <div class="field margin_0">
-                                <label class="label_field hidden">hidden label</label>
-                                <button class="main_bt" id="login">Sing In</button>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
+                <!-- footer -->
+                <%@include file="parts/footer.jsp" %>
+            </div>
+            <!-- end dashboard inner -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex align-items-center">
+                <input type="hidden" id="delete_input">
+                <i class="fa fa-exclamation-circle mr-4" aria-hidden="true" style="font-size: 50px;color: #FF5722"></i>
+                <span>Do you really want delete this salle</span>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-danger" id="delete_btton_model">Delete</button>
             </div>
         </div>
     </div>
 </div>
+<div class="modal  fade" id="sucessmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex align-items-center">
+                <i class="fa fa-check mr-4" aria-hidden="true" style="font-size: 50px;color: #3daa49"></i>
+                <span id="success_message">The salle deleted success</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- jQuery -->
 <script>
-
     $(document).ready(function () {
-        $('#login').click(function () {
-                if ($('#email').val() != "" || $('#password').val() != "") {
-                    $.ajax({
-                        url: "<%=request.getContextPath()%>/login?op=logclick",
-                        data: {
-                            'email': $('#email').val(),
-                            'password': $('#password').val(),
-                        },
-                        type: 'POST',
-                        success: function (data) {
-                            if (parseInt(data) === 0) {
-                                $('#error_mssg').text("the information doesn't match our records")
-                            } else if (parseInt(data) === 1) {
-                                $('#error_mssg').text("")
-                                window.location.href = '<%=request.getContextPath()%>/'
-                            }
-                        },
-                        error: function (e) {
-                            console.log(e.responseText);
-                        }
-                    });
-                } else {
-                    $('#error_mssg').text("Email & password cannot be null")
+        load();
+        $(document).on('click', '.delete_button', function () {
+            $('#delete_input').val($(this).attr('machine_id'))
+            $('#deletemodal').modal('show')
+        })
+        $('#delete_btton_model').click(function () {
+            $.ajax({
+                url: "<%=request.getContextPath()%>/machines?op=delete",
+                data: {
+                    'id': $('#delete_input').val(),
+                },
+                type: 'POST',
+                success: function (data) {
+                    console.log(data)
+                    if (data === true) {
+                        $('#deletemodal').modal('hide')
+                        $('#success_message').text('The machine deleted success')
+                        $('#sucessmodal').modal('show')
+                        load()
+                    }
+                },
+                error: function (e) {
+                    console.log(e.responseText);
                 }
-            })
-    })
+            });
 
+        })
+
+        $('.search_date').on('change', function () {
+            let date1=$('#search_date1').val()
+            let date2=$('#search_date2').val()
+            if(date1!=""){
+                $('#search_date2').attr('min',date1)
+            }
+            if(date2!="" ){
+                $('#search_date1').attr('max',date2)
+            }
+            if(date2!="" && date1!=""){
+                $('#search_button').show()
+            }
+        })
+
+        $('#search_button').on('click',function (){
+            $.ajax({
+                url: "<%=request.getContextPath()%>/machines?op=getdata_by_date",
+                data: {
+                    'date1':$('#search_date1').val(),
+                    'date2':$('#search_date2').val(),
+                },
+                type: 'POST',
+                success: function (data) {
+                    console.log(data)
+                    html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        let nwwdate = Date.parse(data[i].dateAchat).toString("yyyy-MM-dd")
+
+                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + '</td><td salle_id="' + data[i].salle.id + '">' + data[i].salle.code + '</td><td>' + data[i].salle.type +
+                            '</td><td>' + data[i].reference + '</td><td>' + data[i].marque + '</td><td>' + data[i].prix + '</td><td>' + nwwdate + '</td><td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
+                    }
+                    $("#table_content").html(html);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+
+        })
+        function load() {
+            $.ajax({
+                url: "<%=request.getContextPath()%>/machines?op=getdata",
+                data: {},
+                type: 'POST',
+                success: function (data) {
+                    html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        let nwwdate = Date.parse(data[i].dateAchat).toString("yyyy-MM-dd")
+
+                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + '</td><td salle_id="' + data[i].salle.id + '">' + data[i].salle.code + '</td><td>' + data[i].salle.type +
+                            '</td><td>' + data[i].reference + '</td><td>' + data[i].marque + '</td><td>' + data[i].prix + '</td><td>' + nwwdate + '</td><td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
+                    }
+                    $("#table_content").html(html);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+    })
 </script>
 <!-- custom js -->
+<%--<script src="<%=request.getContextPath()%>/assets/js/chart_custom_style1.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/custom.js"></script>--%>
 </body>
 </html>

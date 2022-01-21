@@ -28,4 +28,15 @@
         <servlet-name>SalleController</servlet-name>
         <url-pattern>/salles</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ProfileController</servlet-name>
+        <servlet-class>com.tracker.java.ProfileController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
 </web-app>

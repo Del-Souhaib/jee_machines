@@ -70,6 +70,33 @@ public class UserService implements IDao<User> {
         return false;
     }
 
+    public boolean update2(User o, boolean change_pass) {
+        String sql;
+        if (change_pass) {
+            sql = "update users set name  = ? ,email = ? ,password=? where id  = ?";
+        } else {
+            sql = "update users set name  = ? ,email = ?  where id  = ?";
+        }
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            ps.setString(1, o.getNom());
+            ps.setString(2, o.getEmail());
+            if (change_pass) {
+                ps.setString(3, o.getPassword());
+                ps.setInt(4, o.getId());
+            } else {
+                ps.setInt(3, o.getId());
+            }
+            if (ps.executeUpdate() == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("update : erreur sql : " + e.getMessage());
+
+        }
+        return false;
+    }
+
     @Override
     public User findById(int id) {
         String sql = "select * from users where id  = ?";

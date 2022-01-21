@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <!-- basic -->
@@ -335,7 +335,7 @@
         }
 
         .padding_infor_info {
-            padding: 35px 35px;
+            padding: 35px ;
             float: left;
             width: 100%;
         }
@@ -3552,7 +3552,7 @@
                                     <h2>Liste of machines</h2>
                                 </div>
                             </div>
-                            <div class="table_section padding_infor_info">
+                            <div class="table_section padding_infor_info" style="font-size: 12px">
                                 <div class="table-responsive-sm">
                                     <table class="table">
                                         <thead>
@@ -3561,21 +3561,19 @@
                                             <th><input type="number" class="form-control find findby_id" target="id">
                                             </th>
                                             <th>
-                                                <select type="text" class="form-control find findby_salle"
-                                                        target="salle.code">
-                                                    <option></option>
-                                                </select>
+                                                <input type="text" class="form-control find findby_salle_code"
+                                                       target="salle.code">
                                             </th>
-                                            <th><input type="text" class="form-control find findby_reference"
+                                            <th><input type="text" class="form-control find findby_salle_type"
                                                        target="salle.type"></th>
+                                            <th><input type="text" class="form-control find findby_reference"
+                                                       target="reference"></th>
                                             <th><input type="text" class="form-control find findby_marque"
-                                                       target="reference">
-                                            <th><input type="text" class="form-control find findby_date_achat"
-                                                       target="marque">
-                                            <th><input type="text" class="form-control find findby_prix"
-                                                       target="date_achat">
-                                            <th><input type="date" class="form-control find findby_created_at"
-                                                       target="created_at"></th>
+                                                       target="marque"></th>
+                                            <th><input type="number" class="form-control find findby_prix"
+                                                       target="prix"></th>
+                                            <th><input type="date" class="form-control find findby_date_achat"
+                                                       target="date_achat" style="width: 170px"></th>
                                         </tr>
                                         <tr>
                                             <th>Id</th>
@@ -3585,7 +3583,6 @@
                                             <th>Marque</th>
                                             <th>Prix</th>
                                             <th>Date achat</th>
-                                            <th>Created at</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -3777,23 +3774,24 @@
                 url: "<%=request.getContextPath()%>/machines?op=getdatafiltred",
                 data: {
                     'id': $('.findby_id').val(),
-                    'salle': $('.findby_salle').val(),
+                    'salle_code': $('.findby_salle_code').val(),
+                    'salle_type': $('.findby_salle_type').val(),
                     'reference': $('.findby_reference').val(),
                     'marque': $('.findby_marque').val(),
-                    'date_achat': $('.findby_date_achat').val(),
                     'prix': $('.findby_prix').val(),
-                    'created_at': $('.findby_prix').val(),
-
+                    'date_achat': $('.findby_date_achat').val(),
                 },
                 type: 'POST',
                 success: function (data) {
-                    console.log(data)
                     html = "";
                     for (var i = 0; i < data.length; i++) {
-                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + "</td><td>" + data[i].code + "</td><td>" + data[i].type +
-                            "</td><td>" + data[i].created_at + "</td>" + '<td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
+                        let nwwdate = Date.parse(data[i].dateAchat).toString("yyyy-MM-dd")
+                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + '</td><td salle_id="' + data[i].salle.id + '">' + data[i].salle.code + '</td><td>' + data[i].salle.type +
+                            '</td><td>' + data[i].reference + '</td><td>' + data[i].marque + '</td><td>' + data[i].prix + '</td><td>' + nwwdate + '</td><td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
                     }
                     $("#table_content").html(html);
+                    console.log(data);
+
                 },
                 error: function (e) {
                     console.log(e);
@@ -3812,13 +3810,13 @@
                     for (var i = 0; i < data.length; i++) {
                         let nwwdate = Date.parse(data[i].dateAchat).toString("yyyy-MM-dd")
 
-                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + '</td><td salle_id="' + data[i].salle.id + '">' + data[i].salle.code + "</td><td>" + data[i].salle.type +
-                            "</td><td>" + data[i].reference + "</td>" + "</td><td>" + data[i].marque + "</td>" + "</td><td>" + data[i].prix + "</td><td>" + nwwdate + "</td>" + "</td><td>" + data[i].created_at + "</td>" + '<td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
+                        html += '<tr class="table_row" machine_id="' + data[i].id + '"><td>' + data[i].id + '</td><td salle_id="' + data[i].salle.id + '">' + data[i].salle.code + '</td><td>' + data[i].salle.type +
+                            '</td><td>' + data[i].reference + '</td><td>' + data[i].marque + '</td><td>' + data[i].prix + '</td><td>' + nwwdate + '</td><td><button class="btn btn-danger delete_button" machine_id="' + data[i].id + '">Delete</button></td>';
                     }
                     $("#table_content").html(html);
                 },
                 error: function (e) {
-                    console.log(e.responseText);
+                    console.log(e);
                 }
             });
         }
@@ -3844,7 +3842,7 @@
     })
 </script>
 <!-- custom js -->
-<script src="<%=request.getContextPath()%>/assets/js/chart_custom_style1.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/custom.js"></script>
+<%--<script src="<%=request.getContextPath()%>/assets/js/chart_custom_style1.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/custom.js"></script>--%>
 </body>
 </html>

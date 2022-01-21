@@ -22,6 +22,15 @@ public class Machine {
         this.marque=marque;
         this.created_at=created_at;
     }
+    public Machine(int id, String reference, Date dateAchat, double prix,Salle salle,String marque) {
+        super();
+        this.id = id;
+        this.reference = reference;
+        this.dateAchat = dateAchat;
+        this.prix = prix;
+        this.salle=salle;
+        this.marque=marque;
+    }
 
     public Machine(String reference, Date dateAchat, double prix,Salle salle,String marque) {
         super();

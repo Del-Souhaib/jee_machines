@@ -12,9 +12,27 @@
     <!-- site icon -->
     <%--      <link rel="icon" href="<%=request.getContextPath()%>/images/fevicon.png" type="image/png" />--%>
     <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/WEB-INF/assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/WEB-INF/assets/css/bootstrap.min.css"/>--%>
+<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">--%>
     <!-- site css -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"
+            integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <style>
         /*------------------------------------------------------------------
    File Name: style.css
@@ -3440,20 +3458,20 @@
         }
 
     </style>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style01.css"/>
-    <%--      <!-- responsive css -->--%>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css"/>
-    <%--      <!-- color css -->--%>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/colors.css"/>
-    <%--      <!-- select bootstrap -->--%>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap-select.css"/>
-    <%--      <!-- scrollbar css -->--%>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/perfect-scrollbar.css"/>
-    <%--      <!-- custom css -->--%>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/custom.css"/>
-    <%--      <!--[if lt IE 9]>-->--%>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style01.css"/>--%>
+<%--    &lt;%&ndash;      <!-- responsive css -->&ndash;%&gt;--%>
+<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/responsive.css"/>--%>
+<%--    &lt;%&ndash;      <!-- color css -->&ndash;%&gt;--%>
+<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/colors.css"/>--%>
+<%--    &lt;%&ndash;      <!-- select bootstrap -->&ndash;%&gt;--%>
+<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/bootstrap-select.css"/>--%>
+<%--    &lt;%&ndash;      <!-- scrollbar css -->&ndash;%&gt;--%>
+<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/perfect-scrollbar.css"/>--%>
+<%--    &lt;%&ndash;      <!-- custom css -->&ndash;%&gt;--%>
+<%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/custom.css"/>--%>
+<%--    &lt;%&ndash;      <!--[if lt IE 9]>-->&ndash;%&gt;--%>
+<%--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
+<%--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
     <%--      <![endif]-->--%>
 </head>
 <body class="dashboard dashboard_1">
@@ -3864,27 +3882,27 @@
     </div>
 </div>
 <!-- jQuery -->
-<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/popper.min.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>
-<!-- wow animation -->
-<script src="<%=request.getContextPath()%>/assets/js/animate.js"></script>
-<!-- select country -->
-<script src="<%=request.getContextPath()%>/assets/js/bootstrap-select.js"></script>
-<!-- owl carousel -->
-<script src="<%=request.getContextPath()%>/assets/js/owl.carousel.js"></script>
-<!-- chart js -->
-<script src="<%=request.getContextPath()%>/assets/js/Chart.min.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/Chart.bundle.min.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/utils.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/analyser.js"></script>
-<!-- nice scrollbar -->
-<script src="<%=request.getContextPath()%>/assets/js/perfect-scrollbar.min.js"></script>
-<script>
-    var ps = new PerfectScrollbar('#sidebar');
-</script>
-<!-- custom js -->
-<script src="<%=request.getContextPath()%>/assets/js/chart_custom_style1.js"></script>
-<script src="<%=request.getContextPath()%>/assets/js/custom.js"></script>
+<%--<script src="<%=request.getContextPath()%>/assets/js/jquery.min.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/popper.min.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/bootstrap.min.js"></script>--%>
+<%--<!-- wow animation -->--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/animate.js"></script>--%>
+<%--<!-- select country -->--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/bootstrap-select.js"></script>--%>
+<%--<!-- owl carousel -->--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/owl.carousel.js"></script>--%>
+<%--<!-- chart js -->--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/Chart.min.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/Chart.bundle.min.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/utils.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/analyser.js"></script>--%>
+<%--<!-- nice scrollbar -->--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/perfect-scrollbar.min.js"></script>--%>
+<%--<script>--%>
+<%--    var ps = new PerfectScrollbar('#sidebar');--%>
+<%--</script>--%>
+<%--<!-- custom js -->--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/chart_custom_style1.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/custom.js"></script>--%>
 </body>
 </html>

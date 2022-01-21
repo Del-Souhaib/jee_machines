@@ -106,27 +106,30 @@ public class SalleService implements IDao<Salle> {
         return salles;
     }
 
-    public List<Salle> findFilitred(Salle salle) {
+    public List<Salle> findFilitred(Salle salle,Boolean created_at) {
         List<Salle> salles = new ArrayList<Salle>();
-        String sql= "select * from salles where code like ? and type like ? and created_at like ? ";
+        String sql;
+        if(created_at==true){
+             sql= "select * from salles where code like ? and type like ? and created_at like ? ";
+        }
+        else{
+             sql= "select * from salles where code like ? and type like ?  ";
+        }
+
         if(salle.getId()!=0){
              sql += " and id = ? ";
         }
-//        if(salle.getCreated_at()!=new Date("0000-00-00")){
-//            sql += " and created_at = ?";
-//        }
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
             if(salle.getId()!=0){
                 ps.setInt(4,salle.getId());
             }
-//            if(salle.getCreated_at().toString().equals("0000-00-00")){
-//                ps.setDate(4,new java.sql.Date(salle.getCreated_at().getTime()));
-//            }
 
             ps.setString(1, ("%"+salle.getCode()+"%"));
             ps.setString(2, ("%"+ salle.getType()+"%"));
-            ps.setDate(3, (new Date(salle.getCreated_at().getTime())));
+            if(created_at){
+                ps.setDate(3, (new Date(salle.getCreated_at().getTime())));
+            }
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

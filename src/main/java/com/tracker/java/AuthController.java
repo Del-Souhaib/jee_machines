@@ -63,6 +63,15 @@ public class AuthController extends HttpServlet {
                 out.println(0);
             }
         }
+        else  if (request.getParameter("op").equals("logout")) {
+                session.removeAttribute("logged");
+                session.removeAttribute("user_id");
+                session.removeAttribute("user_name");
+                
+                response.sendRedirect(request.getContextPath()+"/login");
+        }
+
+
     }
 
     /**

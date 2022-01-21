@@ -55,36 +55,25 @@ public class SalleController extends HttpServlet {
         } else if (request.getParameter("op").equals("getdatafiltred")) {
             response.setContentType("application/json");
             int id;
-            Date created_at=new Date();
+            String code = request.getParameter("code");
+            String type = request.getParameter("type");
+            Date date=new Date();
 
             if (!request.getParameter("id").equals("")) {
                 id = Integer.parseInt(request.getParameter("id"));
             } else {
                 id = 0;
             }
-
-//            if (!Objects.equals(request.getParameter("created_at"), "")
-//                    || request.getParameter("created_at") != null) {
-//                created_at = new Date(request.getParameter("created_at").replace("-", "/"));
-//
-//            } else {
-//                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-//                String date_string = "0000-00-00";
-//                try {
-//                    created_at=formatter.parse(date_string);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-            String code = request.getParameter("code");
-            String type = request.getParameter("type");
-            Date date=new Date(request.getParameter("created_at").replace("-", "/"));
-           List<Salle> salles = sv.findFilitred(new Salle(id, code, type,date));
-//            List<Salle> salles = sv.findFilitred(new Salle(id, code, type,created_at));
+            List<Salle> salles;
+            if (!request.getParameter("created_at").equals("")) {
+                 date=new Date(request.getParameter("created_at").replace("-", "/"));
+                salles = sv.findFilitred(new Salle(id, code, type,date),true);
+            } else {
+                 salles = sv.findFilitred(new Salle(id, code, type,date),false);
+            }
+out.println(request.getParameter("created_at"));
             Gson json = new Gson();
-            response.getWriter().write(json.toJson(salles));
-            //out.println(request.getParameter("created_at").replace("-", "/"));
-//            }
+           // response.getWriter().write(json.toJson(salles));
         }
     }
 }

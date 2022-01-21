@@ -79,11 +79,11 @@ public class MachineService implements IDao<Machine> {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            SalleService ss=new SalleService();
+            SalleService ss = new SalleService();
             if (rs.next()) {
-                Salle salle=ss.findById(rs.getInt("salle_id"));
+                Salle salle = ss.findById(rs.getInt("salle_id"));
                 return new Machine(rs.getInt("id"), rs.getString("reference"), rs.getDate("date_achat"),
-                        rs.getDouble("prix"),salle,rs.getString("marque"),rs.getDate("created_at"));
+                        rs.getDouble("prix"), salle, rs.getString("marque"), rs.getDate("created_at"));
             }
 
         } catch (SQLException e) {
@@ -98,12 +98,13 @@ public class MachineService implements IDao<Machine> {
 
         String sql = "select * from machines m inner join salles s on s.id=m.salle_id";
         try {
-            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);;
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            ;
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Salle salle=new Salle(rs.getInt("s.id"),rs.getString("s.code"),rs.getString("s.type"));
+                Salle salle = new Salle(rs.getInt("s.id"), rs.getString("s.code"), rs.getString("s.type"));
                 machines.add(new Machine(rs.getInt("m.id"), rs.getString("m.reference"), rs.getDate("m.date_achat"),
-                        rs.getDouble("m.prix"),salle,rs.getString("m.marque"),rs.getDate("created_at")));
+                        rs.getDouble("m.prix"), salle, rs.getString("m.marque"), rs.getDate("created_at")));
             }
 
         } catch (SQLException e) {
@@ -117,7 +118,8 @@ public class MachineService implements IDao<Machine> {
 
         String sql = "select * from machines where reference =  ?";
         try {
-            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);;
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            ;
             ps.setString(1, ref);
             ResultSet rs = ps.executeQuery();
 //            while (rs.next()) {
@@ -135,7 +137,8 @@ public class MachineService implements IDao<Machine> {
         List<String> references = new ArrayList<String>();
         String sql = "select distinct(reference) as ref from machines";
         try {
-            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);;
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            ;
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 references.add(rs.getString("ref"));
@@ -146,34 +149,63 @@ public class MachineService implements IDao<Machine> {
         return references;
     }
 
-    public List<Machine> findFilitred(Machine machine) {
+    public List<Machine> findFilitred(Machine machine, boolean date_achat) {
         List<Machine> machines = new ArrayList<Machine>();
 
-        String sql= "select * from machines where salle_id like ? and reference like ? and marque like ? " +
-                " and date_achat like ? and prix like ? and created_at like ? ";
-        if(machine.getId()!=0){
-            sql += " and id = ? ";
+        String sql = "select * from machines m inner join salles s on s.id=m.salle_id where m.reference like" +
+                " ? and m.marque like ? and s.code like ? and s.type like ?";
+        if (machine.getId() != 0) {
+            sql += " and m.id =  " + machine.getId();
+        }
+        if (machine.getPrix() != 0) {
+            sql += " and m.prix =" + machine.getPrix();
+        }
+        if (date_achat) {
+            sql += " and m.date_achat = ?";
         }
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
-            if(machine.getId()!=0){
-                ps.setInt(4,machine.getId());
+
+            ps.setString(1, ("%" + machine.getReference() + "%"));
+            ps.setString(2, ("%" + machine.getMarque() + "%"));
+            ps.setString(3, ("%" + machine.getSalle().getCode() + "%"));
+            ps.setString(4, ("%" + machine.getSalle().getType() + "%"));
+            if (date_achat) {
+                ps.setDate(5, new Date(machine.getDateAchat().getTime()));
             }
-
-            ps.setInt(1, (machine.getSalle().getId()));
-            ps.setString(2, ("%"+ machine.getReference()+"%"));
-            ps.setString(3, ("%"+ machine.getMarque()+"%"));
-            ps.setDate(4, (new Date(machine.getDateAchat().getTime())));
-            ps.setDouble(5, (machine.getPrix()));
-            ps.setDate(6, (new Date(machine.getCreated_at().getTime())));
-
             ResultSet rs = ps.executeQuery();
 
-            SalleService ss=new SalleService();
+            SalleService ss = new SalleService();
             while (rs.next()) {
                 machines.add(new Machine(rs.getInt("id"), rs.getString("reference"),
-                        rs.getDate("date_achat"),rs.getDouble("prix"),
-                        ss.findById(rs.getInt("salle_id")),rs.getString("marque"),
+                        rs.getDate("date_achat"), rs.getDouble("prix"),
+                        ss.findById(rs.getInt("salle_id")), rs.getString("marque"),
+                        rs.getDate("created_at")));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("findAll " + e.getMessage());
+        }
+        return machines;
+    }
+
+    public List<Machine> findby2dates(java.util.Date date1, java.util.Date date2) {
+        List<Machine> machines = new ArrayList<Machine>();
+
+        String sql = "select * from machines m inner join salles s on s.id=m.salle_id where " +
+                "date_achat between ? and ?";
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+
+            ps.setDate(1, new Date(date1.getTime()));
+            ps.setDate(2, new Date(date2.getTime()));
+            ResultSet rs = ps.executeQuery();
+
+            SalleService ss = new SalleService();
+            while (rs.next()) {
+                machines.add(new Machine(rs.getInt("id"), rs.getString("reference"),
+                        rs.getDate("date_achat"), rs.getDouble("prix"),
+                        ss.findById(rs.getInt("salle_id")), rs.getString("marque"),
                         rs.getDate("created_at")));
             }
 
