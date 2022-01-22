@@ -10,6 +10,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class ProfileController extends HttpServlet {
@@ -22,8 +24,7 @@ public class ProfileController extends HttpServlet {
             if (request.getParameter("op") == null) {
                 request.getRequestDispatcher("/views/auth/profile.jsp").forward(request, response);
             }
-        }
-        else {
+        } else {
             response.sendRedirect(request.getContextPath() + "/login");
         }
     }
@@ -62,11 +63,37 @@ public class ProfileController extends HttpServlet {
             if (!user.getEmail().equals(email) && us.findByEmail(email)) {
                 out.println("this email already used");
             } else {
-                if (user.getPassword().equals(request.getParameter("oldpassword"))) {
+                String generatedPassword = null;
+                String generatedNewPassword= null;
+                try {
+                    // Create MessageDigest instance for MD5
+                    MessageDigest md = MessageDigest.getInstance("MD5");
+
+                    md.update(request.getParameter("oldpassword").getBytes());
+                    byte[] bytes = md.digest();
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < bytes.length; i++) {
+                        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+                    }
+                    generatedPassword = sb.toString();
+
+                    MessageDigest md2 = MessageDigest.getInstance("MD5");
+                    md2.update(request.getParameter("password1").getBytes());
+                    byte[] bytes2 = md2.digest();
+                    StringBuilder sb2 = new StringBuilder();
+                    for (int i = 0; i < bytes2.length; i++) {
+                        sb2.append(Integer.toString((bytes2[i] & 0xff) + 0x100, 16).substring(1));
+                    }
+                    generatedNewPassword = sb2.toString();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+                if (user.getPassword().equals(generatedPassword)) {
                     if (user != null) {
                         boolean etat = us.update2(new User(user.getId(), name,
-                                email, password1), is_change_password);
+                                email, generatedNewPassword), is_change_password);
                         if (etat) {
+                            session.setAttribute("user_name", name);
                             out.println(1);
                         }
                     } else {

@@ -77,9 +77,9 @@ public class SalleController extends HttpServlet {
             } else {
                 salles = sv.findFilitred(new Salle(id, code, type, date), false);
             }
-            out.println(request.getParameter("created_at"));
+           // out.println(request.getParameter("created_at"));
             Gson json = new Gson();
-            // response.getWriter().write(json.toJson(salles));
+             response.getWriter().write(json.toJson(salles));
         }
     }
 }

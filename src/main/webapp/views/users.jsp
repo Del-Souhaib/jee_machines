@@ -8,11 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Login</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Profile</title>
     <!-- site icon -->
+    <%--      <link rel="icon" href="<%=request.getContextPath()%>/images/fevicon.png" type="image/png" />--%>
+    <!-- bootstrap css -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
             crossorigin="anonymous"></script>
@@ -30,6 +29,10 @@
             integrity="sha512-/n/dTQBO8lHzqqgAQvy0ukBQ0qLmGzxKhn8xKrz4cn7XJkZzy+fAtzjnOQd5w55h4k1kUC+8oIe6WmrGUYwODA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+    <%--    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css"/>--%>
+    <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
+    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">--%>
     <!-- site css -->
     <style>
         /*------------------------------------------------------------------
@@ -97,7 +100,7 @@
 
         @import url(<%=request.getContextPath()%> /assets/css/animate.css);
         @import url(<%=request.getContextPath()%> /assets/css/flaticon.css);
-        @import url(<%=request.getContextPath()%> /assets/css/font-awesome.min.css);
+        @import url(<%=request.getContextPath()%> /assets/css/font_awesome.min.css);
 
         /*------------------------------------------------------------------
             3. basic
@@ -332,7 +335,7 @@
         }
 
         .padding_infor_info {
-            padding: 35px 35px;
+            padding: 35px;
             float: left;
             width: 100%;
         }
@@ -495,7 +498,7 @@
 
         .full {
             width: 100%;
-            float: left;
+            /*float: left;*/
         }
 
         .brown_color {
@@ -1777,10 +1780,10 @@
         }
 
         .main_bt {
-            min-width: 125px;
+            min-width: 100px;
             height: auto;
             float: left;
-            background: #1ed085;
+            background: #FF5722;
             text-align: center;
             color: #fff;
             padding: 10px 25px;
@@ -3344,17 +3347,17 @@
             width: 100%;
         }
 
-        .login_form {
+        .login_form form {
             float: left;
             width: 100%;
         }
 
-        .login_form .field {
+        .login_form form .field {
             display: flex;
             margin: 0;
         }
 
-        .login_form .field label.label_field {
+        .login_form form .field label.label_field {
             margin: 0 30px 0 0;
             width: 115px;
             line-height: 45px;
@@ -3364,12 +3367,12 @@
             font-size: 15px;
         }
 
-        .login_form .field {
+        .login_form form .field {
             display: block;
             margin: 0 0 20px;
         }
 
-        .login_form .field input {
+        .login_form form .field input {
             border-top: none;
             border-left: none;
             border-right: none;
@@ -3382,8 +3385,8 @@
             transition: ease all 0.5s;
         }
 
-        .login_form .field input:hover,
-        .login_form .field input:focus {
+        .login_form form .field input:hover,
+        .login_form form .field input:focus {
             box-shadow: none;
         }
 
@@ -3455,90 +3458,661 @@
             min-height: 720px;
         }
 
-    </style>
+        .table_row {
+            cursor: pointer !important;
+        }
 
-    <%--    <link rel="stylesheet" href="<%=request.getContextPath()%>/style01.css"/>--%>
-    <!-- responsive css -->
-
-    <style>
-        .logo_login {
-            background: url('<%=request.getContextPath()%>/assets/images/layout_img/login_image.jpg');
+        .hiddenarea {
+            display: none;
         }
     </style>
-    <!--[if lt IE 9]>
+    <style>
+        /*------------------------------------------------------------------
+    File Name: responsive.css
+    Template Name: Pluto - Responsive HTML5 Template
+    Created By: html.design
+    Envato Profile: https://themeforest.net/user/htmldotdesign
+    Website: https://html.design
+    Version: 1.0
+-------------------------------------------------------------------*/
 
-    <![endif]-->
+
+        /*-----------------------------------
+          sidebar small only desktop
+        -----------------------------------*/
+
+        @media (min-width: 1200px) {
+            /*-- small sidebar --*/
+            #sidebar.active {
+                min-width: 90px;
+                max-width: 90px;
+                text-align: center;
+            }
+            #sidebar.active .sidebar-header h3,
+            #sidebar.active .CTAs {
+                display: none;
+            }
+            #sidebar.active .sidebar-header strong {
+                display: block;
+            }
+            #sidebar.active ul li a {
+                padding: 10px 0;
+                float: left;
+                width: 100%;
+                text-align: center;
+            }
+            #sidebar.active ul li a i {
+                width: 100%;
+                text-align: center;
+                margin: 0 0 5px 0;
+                font-size: 24px;
+            }
+            #sidebar.active ul ul a {
+                padding: 10px !important;
+            }
+            #sidebar.active .dropdown-toggle::after {
+                display: none;
+            }
+            nav#sidebar.active .logo_big {
+                text-align: center;
+                padding: 8px 0 7px;
+            }
+            #sidebar.active .logo_big img {
+                height: 45px;
+            }
+            #sidebar.active .logo_section {
+                padding: 0;
+                margin-bottom: 10px;
+                background: #fff;
+                width: 100%;
+            }
+            #sidebar.active ul.components {
+                padding: 0;
+            }
+            #sidebar.active .logo_big {
+                display: none;
+            }
+            .logo_icon {
+                display: none;
+            }
+            #sidebar.active .logo_icon {
+                display: block;
+            }
+            #sidebar.active .logo_big img {
+                height: 45px;
+            }
+            #sidebar.active h4 {
+                display: none;
+            }
+            #sidebar.active .sidebar_user_info {
+                display: none;
+            }
+            #sidebar.active ul li a span {
+                font-size: 13px;
+            }
+            #sidebar ul li a i {}
+        }
+
+
+        /*-----------------------------------
+          end sidebar small only desktop
+        -----------------------------------*/
+
+        @media (min-width: 1200px) and (max-width: 1600px) {
+            .counter_section {
+                display: block;
+            }
+            .couter_icon {
+                display: block;
+                width: 100%;
+            }
+            .couter_icon>div {
+                padding-right: 0;
+            }
+            .counter_no p.total_no {
+                text-align: center;
+            }
+            .counter_no .head_couter {
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .counter_section {
+                display: block;
+            }
+            .couter_icon {
+                display: block;
+                width: 100%;
+            }
+            .couter_icon>div {
+                padding-right: 0;
+            }
+            .counter_no p.total_no {
+                text-align: center;
+            }
+            .counter_no .head_couter {
+                text-align: center;
+                font-size: 16px;
+            }
+            .dashboard_2 .social_cont ul li {
+                padding: 0;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            body {
+                overflow-x: hidden;
+            }
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+            .info_people .user_info_cont {
+                width: 60%;
+                padding-left: 30px;
+                padding-top: 0;
+            }
+            .fw_icon {
+                width: 33.33%;
+            }
+        }
+
+        @media (max-width: 575px) {
+            body {
+                overflow-x: hidden;
+            }
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+            .padding_infor_info {
+                padding: 20px 20px;
+            }
+            .payment_option li {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            body {
+                overflow-x: hidden;
+            }
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            body {
+                overflow-x: hidden;
+            }
+            .container {
+                width: 100%;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 1199px) {
+            * {
+                box-sizing: border-box;
+            }
+            #sidebar {
+                min-width: 80px;
+                max-width: 80px;
+                text-align: center;
+                margin-left: -80px !important;
+            }
+            #sidebar.active {
+                margin-left: 0 !important;
+            }
+            #sidebar .sidebar-header h3,
+            #sidebar .CTAs {
+                display: none;
+            }
+            #sidebar .sidebar-header strong {
+                display: block;
+            }
+            /*-- responsive --*/
+            #sidebar.active+#content .topbar {
+                transition: ease all 0.3s;
+            }
+            .topbar {
+                padding-left: 0;
+                min-width: 320px;
+            }
+            #sidebar.active+#content .topbar {
+                padding-left: 0;
+                min-width: 320px;
+                left: 250px;
+            }
+            #content {
+                padding: 60px 15px 25px 15px;
+            }
+            #sidebar.active {
+                min-width: 250px;
+                max-width: 250px;
+                text-align: left;
+            }
+            #sidebar.active+#content {
+                padding-left: 0;
+                left: 250px;
+                position: relative;
+                min-width: 320px;
+                height: auto;
+                transition: ease all 0.3s;
+            }
+            .right_topbar .icon_info ul.user_profile_dd {
+                display: none;
+            }
+            .right_topbar {
+                float: right;
+                padding: 0;
+                margin: 5px 15px 5px 0;
+            }
+            .sidebar_toggle {
+                padding: 14px 22px 13px;
+            }
+            .logo_section img {
+                height: 38px;
+                padding: 0;
+                margin: 12px 0 0 15px;
+            }
+            .icon_info ul li {
+                width: 30px;
+            }
+            .icon_info ul li a {
+                font-size: 16px;
+            }
+            .logo_section img.logo_icon {
+                display: none;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .icon_info ul li {
+                margin: 15px 0 0 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .counter_section {
+                padding: 30px 25px;
+            }
+            .counter_no {
+                padding: 0;
+            }
+            .counter_no .head_couter {
+                font-size: 16px;
+            }
+            #testimonial_slider.carousel .carousel-control {
+                top: -35px;
+            }
+            .content.testimonial {
+                margin-top: 50px;
+            }
+            #testimonial_slider.carousel .testimonial {
+                font-size: 13px;
+                line-height: normal;
+            }
+            .progress_bar {
+                padding: 15px 25px 50px 25px;
+            }
+            .dash_head {
+                padding: 30px 30px 25px;
+            }
+            .task_list li {
+                padding: 20px 30px;
+            }
+            .task_list li a {
+                color: #99abb4;
+                font-size: 15px;
+                line-height: normal;
+                margin-bottom: 10px;
+                float: left;
+                width: 100%;
+            }
+            .msg_list_main ul li {
+                display: block;
+            }
+            .msg_list_main ul li>span:nth-child(1) {
+                margin-right: 20px;
+                margin-bottom: 10px;
+            }
+            /*----- widgets page css -----*/
+            .info_people {
+                padding: 25px;
+                display: block;
+            }
+            .info_people .p_info_img {
+                width: 100%;
+                text-align: center;
+            }
+            .info_people .p_info_img img {
+                width: 90px;
+            }
+            .info_people .user_info_cont {
+                width: 100%;
+                padding-left: 0;
+                padding-top: 25px;
+                text-align: center;
+            }
+            .calendar {
+                overflow: auto;
+            }
+            /** accordian css **/
+            .tab_style3 .tabbar {
+                display: block;
+            }
+            .tab_style3 #v-pills-tabContent {
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 25px;
+            }
+            .pagination.button_section {
+                display: block;
+            }
+            .pagination.button_section .btn-group {
+                margin: 5px 0 0;
+            }
+            .fw_icon {
+                width: 50%;
+            }
+            /**-- email page --**/
+            .mail-box {
+                float: left;
+                width: 100%;
+            }
+            .mail-box .sm-side {
+                width: 100%;
+                float: left;
+            }
+            .mail-box .lg-side {
+                background: none repeat scroll 0 0 #fff;
+                border-radius: 0 4px 4px 0;
+                width: 100%;
+                float: left;
+                overflow: auto;
+            }
+            aside.lg-side .inbox-body {
+                min-width: 565px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .table.table-striped.projects {
+                min-width: 780px;
+            }
+            /** login page **/
+            .full_height {
+                height: auto;
+            }
+            .login_section {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+            .login_form form .field input {
+                max-width: 395px;
+                width: 100%;
+            }
+            .login_form form .field label.label_field {
+                text-align: left;
+            }
+            .login_form form .field {
+                display: block;
+                margin: 0 0 20px;
+                float: left;
+                width: 100%;
+            }
+            .label_field.hidden {
+                display: none;
+            }
+            .login_form form .field .form-check-label {
+                float: left;
+                width: 100%;
+            }
+            .forgot {
+                float: left;
+            }
+            .error_page h3 {
+                font-size: 36px;
+                line-height: 45px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .model_bt {
+                padding: 11px 0 10px;
+                width: 100%;
+            }
+            .fw_icon {
+                width: 100%;
+            }
+            aside .inbox-head .position.search_inbox {
+                display: none;
+            }
+            .contact_inner .left {
+                width: 100%;
+                float: left;
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+            .contact_inner .right {
+                width: 100%;
+                float: left;
+            }
+            .bottom_list .right_button {
+                float: right;
+                display: flex;
+            }
+            .bottom_list .right_button button {
+                margin: 0 0 0 5px;
+            }
+            .dis_flex {
+                display: block;
+                margin: 0;
+            }
+            .dis_flex .profile_img {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+
 </head>
-<body class="inner_page login">
+<body class="dashboard dashboard_1">
 <div class="full_container">
-    <div class="container">
-        <div class="center verticle_center full_height">
-            <div class="login_section">
-                <div class="logo_login">
-                    <div class="center">
-                        <img width="210" src="<%=request.getContextPath()%>/assets/images/logo/logo.png" alt="#"/>
+    <div class="inner_container">
+        <!-- Sidebar  -->
+        <%@include file="../parts/sidenav.jsp" %>
+        <!-- end sidebar -->
+        <!-- right content -->
+        <div id="content">
+            <!-- topbar -->
+            <%@include file="../parts/header.jsp" %>
+            <!-- end topbar -->
+            <!-- dashboard inner -->
+            <div class="midde_cont">
+                <div class="container-fluid">
+                    <div class="row column_title">
+                        <div class="col-md-12">
+                            <div class="page_title">
+                                <h2>Profile</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row white_shd full margin_bottom_30 mt-4 pb-5">
+                        <div class="full graph_head">
+                            <div class="heading1 margin_0">
+                                <h2>Information</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-3">
+                            <label for="user_name" class="mr-sm-2">User name</label>
+                            <input type="text" required class="form-control mb-2 mr-sm-2"
+                                   id="user_name">
+                        </div>
+                        <div class="col-lg-6 mt-3">
+                            <label for="email" class="mr-sm-2">Email</label>
+                            <input type="email" required class="form-control mb-2 mr-sm-2"
+                                   id="email">
+                        </div>
+                        <div class="col-sm-12 mt-3" style="margin-left: 15px!important;">
+                            <input type="checkbox" class="form-check-input" id="changepassword">
+                            <label class="form-check-label" for="changepassword">Change password</label>
+                        </div>
+                        <div class="col-lg-6 mt-3 ">
+                            <label for="oldpassword" class="mr-sm-2">Password</label>
+                            <input type="password" required class="form-control mb-2 mr-sm-2"
+                                   id="oldpassword">
+                        </div>
+                        <div class="col-lg-6 mt-3 hiddenarea">
+                            <label for="newpassword1" class="mr-sm-2">New Password</label>
+                            <input type="password" class="form-control mb-2 mr-sm-2"
+                                   id="newpassword1">
+                        </div>
+                        <div class="col-lg-6 mt-3 hiddenarea">
+                            <label for="newpassword2" class="mr-sm-2">Confirme Password</label>
+                            <input type="password" class="form-control mb-2 mr-sm-2"
+                                   id="newpassword2">
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <p class="mb-3 text-danger" id="error_message"></p>
+                            <button class="main_bt mr-5" id="Save">Save</button>
+                        </div>
                     </div>
                 </div>
-                <div class="login_form">
-                    <div>
-                        <fieldset>
-                            <div class="field">
-                                <label class="label_field">Email Address</label>
-                                <input type="email" required name="email" id="email" placeholder="E-mail"/>
-                            </div>
-                            <div class="field">
-                                <label class="label_field">Password</label>
-                                <input type="password" required name="password" id="password" placeholder="Password"/>
-                            </div>
-                            <div class="field">
-                                <label class="label_field hidden">hidden label</label>
-                                <label class="form-check-label"><input type="checkbox" class="form-check-input">
-                                    Remember Me</label>
-                                <p id="error_mssg" class="text-danger"></p>
-                            </div>
-                            <div class="field margin_0">
-                                <label class="label_field hidden">hidden label</label>
-                                <button class="main_bt" id="login">Sing In</button>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
+                <!-- footer -->
+                <%@include file="../parts/footer.jsp" %>
+            </div>
+            <!-- end dashboard inner -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex align-items-center">
+                <input type="hidden" id="delete_input">
+                <i class="fa fa-exclamation-circle mr-4" aria-hidden="true" style="font-size: 50px;color: #FF5722"></i>
+                <span>Do you really want delete this salle</span>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-danger" id="delete_btton_model">Delete</button>
             </div>
         </div>
     </div>
 </div>
+<div class="modal  fade" id="sucessmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex align-items-center">
+                <i class="fa fa-check mr-4" aria-hidden="true" style="font-size: 50px;color: #3daa49"></i>
+                <span id="success_message">The salle deleted success</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- jQuery -->
 <script>
-
     $(document).ready(function () {
-        $('#login').click(function () {
-                if ($('#email').val() != "" || $('#password').val() != "") {
-                    $.ajax({
-                        url: "<%=request.getContextPath()%>/login?op=logclick",
-                        data: {
-                            'email': $('#email').val(),
-                            'password': $('#password').val(),
-                        },
-                        type: 'POST',
-                        success: function (data) {
-                            if (parseInt(data) === 0) {
-                                $('#error_mssg').text("the information doesn't match our records")
-                            } else if (parseInt(data) === 1) {
-                                $('#error_mssg').text("")
-                                window.location.href = '<%=request.getContextPath()%>/'
-                            }
-                        },
-                        error: function (e) {
-                            console.log(e.responseText);
-                        }
-                    });
-                } else {
-                    $('#error_mssg').text("Email & password cannot be null")
-                }
-            })
-    })
+        load();
+        $("#changepassword").click(function () {
+            if ($(this).is(':checked')) {
+                $('.hiddenarea').show()
+                $('#newpassword1').attr('required', 'required')
+                $('#newpassword2').attr('required', 'required')
 
+            } else {
+                $('.hiddenarea').hide()
+                $('#newpassword2').removeAttr('required')
+            }
+        })
+        $('#Save').click(function () {
+            let name = $('#user_name').val()
+            let email = $('#email').val()
+            let oldpassword = $('#oldpassword').val();
+            let password1 = "";
+            let password2 = "";
+            let changepass = false
+            if ($('#changepassword').is(':checked')) {
+                changepass = true
+                password1 = $('#newpassword1').val();
+                password2 = $('#newpassword2').val();
+            }
+
+            if (name == '' || email == '' || oldpassword == '') {
+                $('#error_message').text('Fill the inputs first')
+            } else {
+                $.ajax({
+                    url: "<%=request.getContextPath()%>/profile?op=change",
+                    data: {
+                        'name': name,
+                        'email': email,
+                        'changrpassword': changepass,
+                        'oldpassword': oldpassword,
+                        'password1': password1,
+                        'password2': password2,
+                    },
+                    type: 'POST',
+                    success: function (data) {
+                        $('#error_message').text('')
+                        if (data == 1) {
+                            $('#sucessmodal').modal('show')
+                            $('#success_message').text('Your profile updated success')
+                            load()
+                        } else {
+                            $('#error_message').text(data)
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+
+            }
+        })
+
+
+        function load() {
+            $.ajax({
+                url: "<%=request.getContextPath()%>/profile?op=getdata",
+                data: {},
+                type: 'POST',
+                success: function (data) {
+                    $("#user_name").val(data["name"])
+                    $("#email").val(data["email"])
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+    })
 </script>
 <!-- custom js -->
+<%--<script src="<%=request.getContextPath()%>/assets/js/chart_custom_style1.js"></script>--%>
+<%--<script src="<%=request.getContextPath()%>/assets/js/custom.js"></script>--%>
 </body>
 </html>

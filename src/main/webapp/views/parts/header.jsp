@@ -12,9 +12,9 @@
                     <ul class="user_profile_dd">
                         <li>
                             <a class="dropdown-toggle" data-toggle="dropdown">
-<%--                                <img class="img-responsive rounded-circle"--%>
-<%--                                                                                   src="assets/images/layout_img/user_img.jpg"--%>
-<%--                                                                                   alt="#"/>--%>
+                                <img class="img-responsive rounded-circle"
+                                                                                   src="assets/images/layout_img/user_img.jpg"
+                                                                                   alt="#"/>
                                 <span class="name_user"><%= session.getAttribute("user_name")%></span></a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="<%=request.getContextPath()%>/profile">My Profile</a>

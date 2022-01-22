@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern></url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>SalleController</servlet-name>
@@ -37,6 +37,16 @@
     <servlet-mapping>
         <servlet-name>ProfileController</servlet-name>
         <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>com.tracker.java.UserController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/users</url-pattern>
     </servlet-mapping>
 
 </web-app>
