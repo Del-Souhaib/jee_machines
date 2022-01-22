@@ -17,9 +17,14 @@ public class ProfileController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("op") == null) {
-            request.getRequestDispatcher("/views/auth/profile.jsp").forward(request, response);
-
+        HttpSession session = request.getSession();
+        if (session.getAttribute("logged") != null) {
+            if (request.getParameter("op") == null) {
+                request.getRequestDispatcher("/views/auth/profile.jsp").forward(request, response);
+            }
+        }
+        else {
+            response.sendRedirect(request.getContextPath() + "/login");
         }
     }
 
@@ -40,36 +45,39 @@ public class ProfileController extends HttpServlet {
             String password1 = request.getParameter("password1");
             String password2 = request.getParameter("password2");
             boolean is_change_password = Boolean.parseBoolean(request.getParameter("changrpassword"));
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
 
             if (is_change_password) {
                 if (!password1.equals(password2)) {
                     out.println("password dosent match");
                     return;
-                }
-                else if(password1.isEmpty() || password2.isEmpty()){
+                } else if (password1.isEmpty() || password2.isEmpty()) {
                     out.println("Fill the passwords fields");
                     return;
                 }
             }
 
-          User user=us.findById(Integer.parseInt(session.getAttribute("user_id").toString()));
-          if(user.getPassword().equals(request.getParameter("oldpassword"))){
-              if (user != null) {
-                  boolean etat=us.update2(new User(user.getId(),request.getParameter("name"),
-                          request.getParameter("email"),password1),is_change_password);
-                 if(etat==true){
-                     out.println(1);
-                 }
-              }
-              else {
-                  out.println(0);
-              }
-          }
-          else {
-              out.println("password incorect");
-              return;
+            User user = us.findById(Integer.parseInt(session.getAttribute("user_id").toString()));
+            if (!user.getEmail().equals(email) && us.findByEmail(email)) {
+                out.println("this email already used");
+            } else {
+                if (user.getPassword().equals(request.getParameter("oldpassword"))) {
+                    if (user != null) {
+                        boolean etat = us.update2(new User(user.getId(), name,
+                                email, password1), is_change_password);
+                        if (etat) {
+                            out.println(1);
+                        }
+                    } else {
+                        out.println(0);
+                    }
+                } else {
+                    out.println("password incorect");
+                    return;
+                }
+            }
 
-          }
         }
     }
 }

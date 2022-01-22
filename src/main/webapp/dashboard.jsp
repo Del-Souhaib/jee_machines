@@ -1554,11 +1554,7 @@
 
         /**  **/
 
-        #canvas-holder {
-            width: 100%;
-            margin-top: 50px;
-            text-align: center;
-        }
+
 
         #chartjs-tooltip {
             opacity: 1;
@@ -4115,7 +4111,7 @@
                             <div class="white_shd full">
                                 <div class="full graph_head">
                                     <div class="heading1 margin_0">
-                                        <h2>Chart</h2>
+                                        <h2>Nb machines of salle Chart 1</h2>
                                     </div>
                                 </div>
                                 <div class="full graph_revenue">
@@ -4133,6 +4129,29 @@
                         </div>
                     </div>
                     <!-- end graph -->
+                    <div class="row column2 graph margin_bottom_30">
+                        <div class="col-md-l2 col-lg-12">
+                            <div class="white_shd full">
+                                <div class="full graph_head">
+                                    <div class="heading1 margin_0">
+                                        <h2>Nb machines of salle Chart 2</h2>
+                                    </div>
+                                </div>
+                                <div class="full graph_revenue">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="content">
+                                                <div class="area_chart text-center" style="position:relative !important;width: 80vh!important">
+                                                    <canvas  id="salle_per_machines_chart2"> </canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- footer -->
                 <%@include file="views/parts/footer.jsp" %>
@@ -4144,51 +4163,7 @@
 <script>
     $(document).ready(function () {
 
-        const labels = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-        ];
 
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'My First Dataset',
-                data: [65, 59, 80, 81, 56, 55, 40],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                    'rgb(255, 205, 86)',
-                    'rgb(75, 192, 192)',
-                    'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {}
-        };
-        const myChart = new Chart(
-            document.getElementById('salle_per_machines_chart'),
-            config
-        );
         load();
         load2();
 
@@ -4198,10 +4173,64 @@
                 data: {},
                 type: 'POST',
                 success: function (data) {
-                    console.log(data[0])
-            /*        for (let i = 0; i < data.length; i++) {
-                        console.log(data[i])
-                    }*/
+                    console.log(data)
+                    let labels=[];
+                    let datavalue=[]
+                    for (let i = 0; i < data.length; i++) {
+                        labels.push(data[i].name)
+                        datavalue.push(data[i].nb)
+                    }
+                    const data02 = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'nb Machines of salle',
+                            data: datavalue,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(255, 205, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(201, 203, 207, 0.2)',
+                                'rgb(232,152,152,0.2)',
+                                'rgb(158,224,121,0.2)'
+
+                            ],
+                            borderColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(255, 159, 64)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(54, 162, 235)',
+                                'rgb(153, 102, 255)',
+                                'rgb(201, 203, 207)',
+                                'rgb(232,152,152)',
+                                'rgb(158,224,121)'
+
+                            ],
+                            borderWidth: 1
+                        }]
+                    };
+                    const config = {
+                        type: 'bar',
+                        data: data02,
+                        options: {}
+                    };
+                    const myChart = new Chart(
+                        document.getElementById('salle_per_machines_chart'),
+                        config
+                    );
+
+                    const config2 = {
+                        type: 'pie',
+                        data: data02,
+                        options: {}
+                    };
+                    const myChart2 = new Chart(
+                        document.getElementById('salle_per_machines_chart2'),
+                        config2
+                    );
                 },
                 error: function (e) {
                     console.log(e.responseText);

@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.Salle;
 import com.google.gson.Gson;
@@ -45,13 +46,19 @@ public class MachineController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        if (request.getParameter("op") == null) {
-            request.getRequestDispatcher("/views/machines.jsp").forward(request, response);
-        } else if (request.getParameter("op").equals("search_date")) {
-            request.getRequestDispatcher("/views/machines_date.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        if (session.getAttribute("logged") != null) {
+            if (request.getParameter("op") == null) {
+                request.getRequestDispatcher("/views/machines.jsp").forward(request, response);
+            } else if (request.getParameter("op").equals("search_date")) {
+                request.getRequestDispatcher("/views/machines_date.jsp").forward(request, response);
+            }
+        }
+        else {
+            response.sendRedirect(request.getContextPath() + "/login");
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -89,7 +96,7 @@ public class MachineController extends HttpServlet {
         } else if (request.getParameter("op").equals("getdatafiltred")) {
             response.setContentType("application/json");
             int id;
-            Date date_achat ;
+            Date date_achat;
             double prix;
             if (!request.getParameter("id").equals("")) {
                 id = Integer.parseInt(request.getParameter("id"));
@@ -113,19 +120,18 @@ public class MachineController extends HttpServlet {
                 is_date_achat = true;
             } else {
                 is_date_achat = false;
-                date_achat =new Date();
+                date_achat = new Date();
             }
             List<Machine> machines = ms.findFilitred(new Machine(id, reference, date_achat, prix, new Salle(salle_code, salle_type), marque), is_date_achat);
             Gson json = new Gson();
-           // out.println(date_achat);
-          //  response.getWriter().write(json.toJson(new Machine(id, reference, date_achat, prix, new Salle(salle_code, salle_type),marque)));
+            // out.println(date_achat);
+            //  response.getWriter().write(json.toJson(new Machine(id, reference, date_achat, prix, new Salle(salle_code, salle_type),marque)));
             response.getWriter().write(json.toJson(machines));
-        }
-        else if (request.getParameter("op").equals("getdata_by_date")) {
+        } else if (request.getParameter("op").equals("getdata_by_date")) {
             response.setContentType("application/json");
-            Date date1=new Date(request.getParameter("date1").replace("-", "/"));
-            Date date2=new Date(request.getParameter("date2").replace("-", "/"));
-            List<Machine> machines = ms.findby2dates(date1,date2);
+            Date date1 = new Date(request.getParameter("date1").replace("-", "/"));
+            Date date2 = new Date(request.getParameter("date2").replace("-", "/"));
+            List<Machine> machines = ms.findby2dates(date1, date2);
             Gson json = new Gson();
             response.getWriter().write(json.toJson(machines));
 

@@ -136,6 +136,23 @@ public class UserService implements IDao<User> {
         return null;
     }
 
+    public boolean findByEmail(String email) {
+        String sql = "select * from users where email  = ?  limit 1";
+        try {
+            PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("findById " + e.getMessage());
+        }
+        return false;
+    }
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<User>();

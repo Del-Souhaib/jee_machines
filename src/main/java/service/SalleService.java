@@ -1,5 +1,6 @@
 package service;
 
+import beans.Chart;
 import beans.Machine;
 import beans.Salle;
 
@@ -162,15 +163,15 @@ public class SalleService implements IDao<Salle> {
 
     }
 
-    public HashMap<String, Integer> machine_per_salle() {
+    public List<Chart> machine_per_salle() {
         String sql = "SELECT s.code,(select COUNT(*) from machines m where m.salle_id=s.id) as nb FROM salles s";
-        HashMap<String, Integer> data = new HashMap<>();
+        List<Chart> data = new ArrayList<Chart>();
         try {
             PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                data.put(rs.getString("code"), rs.getInt("nb"));
+                data.add(new Chart(rs.getString("code"), rs.getInt("nb")));
             }
         } catch (SQLException e) {
             System.out.println("findAll " + e.getMessage());

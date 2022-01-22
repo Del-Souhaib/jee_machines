@@ -23,8 +23,14 @@ public class SalleController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("op") == null) {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("logged") != null) {
+            if (request.getParameter("op") == null) {
             request.getRequestDispatcher("/views/salles.jsp").forward(request, response);
+            }
+            else {
+                response.sendRedirect(request.getContextPath() + "/login");
+            }
         }
     }
 

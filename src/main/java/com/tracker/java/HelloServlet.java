@@ -1,5 +1,6 @@
 package com.tracker.java;
 
+import beans.Chart;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import service.MachineService;
@@ -7,7 +8,9 @@ import service.SalleService;
 import service.UserService;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -45,7 +48,8 @@ public class HelloServlet extends HttpServlet {
             response.getWriter().write(json.toJson(map));
         } else if (request.getParameter("op").equals("chart1")) {
             Gson json = new Gson();
-            response.getWriter().write(json.toJson(ss.machine_per_salle()));
+            List<Chart> charts=ss.machine_per_salle();
+            response.getWriter().write(json.toJson(charts));
         }
 
 
